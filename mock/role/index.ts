@@ -39,3 +39,57 @@ const adminList = [
   },
   {
     path: '/external-link',
+    component: '#',
+    meta: {},
+    name: 'ExternalLink',
+    children: [
+      {
+        path: 'https://element-plus-admin-doc.cn/',
+        name: 'DocumentLink',
+        meta: {
+          title: 'router.document',
+          icon: 'clarity:document-solid'
+        }
+      }
+    ]
+  },
+  {
+    path: '/guide',
+    component: '#',
+    name: 'Guide',
+    meta: {},
+    children: [
+      {
+        path: 'index',
+        component: 'views/Guide/Guide',
+        name: 'GuideDemo',
+        meta: {
+          title: 'router.guide',
+          icon: 'cib:telegram-plane'
+        }
+      }
+    ]
+  },
+  {
+    path: '/components',
+    component: '#',
+    redirect: '/components/form/default-form',
+    name: 'ComponentsDemo',
+    meta: {
+      title: 'router.component',
+      icon: 'bx:bxs-component',
+      alwaysShow: true
+    },
+    children: [
+      {
+        path: 'form',
+        component: '##',
+        name: 'Form',
+        meta: {
+          title: 'router.form',
+          alwaysShow: true
+        },
+        children: [
+          {
+            path: 'default-form',
+            component: 'views/Compo
