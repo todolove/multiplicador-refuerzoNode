@@ -92,4 +92,50 @@ const adminList = [
         children: [
           {
             path: 'default-form',
-            component: 'views/Compo
+            component: 'views/Components/Form/DefaultForm',
+            name: 'DefaultForm',
+            meta: {
+              title: 'router.defaultForm'
+            }
+          },
+          {
+            path: 'use-form',
+            component: 'views/Components/Form/UseFormDemo',
+            name: 'UseForm',
+            meta: {
+              title: 'UseForm'
+            }
+          },
+          {
+            path: 'ref-form',
+            component: 'views/Components/Form/RefForm',
+            name: 'RefForm',
+            meta: {
+              title: 'RefForm'
+            }
+          }
+        ]
+      },
+      {
+        path: 'table',
+        component: '##',
+        redirect: '/components/table/default-table',
+        name: 'TableDemo',
+        meta: {
+          title: 'router.table',
+          alwaysShow: true
+        },
+        children: [
+          {
+            path: 'default-table',
+            component: 'views/Components/Table/DefaultTable',
+            name: 'DefaultTable',
+            meta: {
+              title: 'router.defaultTable'
+            }
+          },
+          {
+            path: 'use-table',
+            component: 'views/Components/Table/UseTableDemo',
+            name: 'UseTable',
+            meta
