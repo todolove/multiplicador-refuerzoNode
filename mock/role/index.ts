@@ -189,4 +189,60 @@ const adminList = [
         }
       },
       {
-        path: '
+        path: 'image-viewer',
+        component: 'views/Components/ImageViewer',
+        name: 'ImageViewer',
+        meta: {
+          title: 'router.imageViewer'
+        }
+      },
+      {
+        path: 'dialog',
+        component: 'views/Components/Dialog',
+        name: 'Dialog',
+        meta: {
+          title: 'router.dialog'
+        }
+      },
+      {
+        path: 'icon',
+        component: 'views/Components/Icon',
+        name: 'Icon',
+        meta: {
+          title: 'router.icon'
+        }
+      },
+      {
+        path: 'echart',
+        component: 'views/Components/Echart',
+        name: 'Echart',
+        meta: {
+          title: 'router.echart'
+        }
+      },
+      {
+        path: 'count-to',
+        component: 'views/Components/CountTo',
+        name: 'CountTo',
+        meta: {
+          title: 'router.countTo'
+        }
+      },
+      {
+        path: 'qrcode',
+        component: 'views/Components/Qrcode',
+        name: 'Qrcode',
+        meta: {
+          title: 'router.qrcode'
+        }
+      },
+      {
+        path: 'highlight',
+        component: 'views/Components/Highlight',
+        name: 'Highlight',
+        meta: {
+          title: 'router.highlight'
+        }
+      },
+      {
+        path
