@@ -138,4 +138,55 @@ const adminList = [
             path: 'use-table',
             component: 'views/Components/Table/UseTableDemo',
             name: 'UseTable',
-            meta
+            meta: {
+              title: 'UseTable'
+            }
+          },
+          {
+            path: 'ref-table',
+            component: 'views/Components/Table/RefTable',
+            name: 'RefTable',
+            meta: {
+              title: 'RefTable'
+            }
+          }
+        ]
+      },
+      {
+        path: 'editor-demo',
+        component: '##',
+        redirect: '/components/editor-demo/editor',
+        name: 'EditorDemo',
+        meta: {
+          title: 'router.editor',
+          alwaysShow: true
+        },
+        children: [
+          {
+            path: 'editor',
+            component: 'views/Components/Editor/Editor',
+            name: 'Editor',
+            meta: {
+              title: 'router.richText'
+            }
+          }
+        ]
+      },
+      {
+        path: 'search',
+        component: 'views/Components/Search',
+        name: 'Search',
+        meta: {
+          title: 'router.search'
+        }
+      },
+      {
+        path: 'descriptions',
+        component: 'views/Components/Descriptions',
+        name: 'Descriptions',
+        meta: {
+          title: 'router.descriptions'
+        }
+      },
+      {
+        path: '
