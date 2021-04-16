@@ -245,4 +245,61 @@ const adminList = [
         }
       },
       {
-        path
+        path: 'infotip',
+        component: 'views/Components/Infotip',
+        name: 'Infotip',
+        meta: {
+          title: 'router.infotip'
+        }
+      },
+      {
+        path: 'input-password',
+        component: 'views/Components/InputPassword',
+        name: 'InputPassword',
+        meta: {
+          title: 'router.inputPassword'
+        }
+      },
+      {
+        path: 'sticky',
+        component: 'views/Components/Sticky',
+        name: 'Sticky',
+        meta: {
+          title: 'router.sticky'
+        }
+      }
+    ]
+  },
+  {
+    path: '/hooks',
+    component: '#',
+    redirect: '/hooks/useWatermark',
+    name: 'Hooks',
+    meta: {
+      title: 'hooks',
+      icon: 'ic:outline-webhook',
+      alwaysShow: true
+    },
+    children: [
+      {
+        path: 'useWatermark',
+        component: 'views/hooks/useWatermark',
+        name: 'UseWatermark',
+        meta: {
+          title: 'useWatermark'
+        }
+      },
+      {
+        path: 'useCrudSchemas',
+        component: 'views/hooks/useCrudSchemas',
+        name: 'UseCrudSchemas',
+        meta: {
+          title: 'useCrudSchemas'
+        }
+      }
+    ]
+  },
+  {
+    path: '/level',
+    component: '#',
+    redirect
