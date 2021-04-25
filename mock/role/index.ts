@@ -302,4 +302,51 @@ const adminList = [
   {
     path: '/level',
     component: '#',
-    redirect
+    redirect: '/level/menu1/menu1-1/menu1-1-1',
+    name: 'Level',
+    meta: {
+      title: 'router.level',
+      icon: 'carbon:skill-level-advanced'
+    },
+    children: [
+      {
+        path: 'menu1',
+        name: 'Menu1',
+        component: '##',
+        redirect: '/level/menu1/menu1-1/menu1-1-1',
+        meta: {
+          title: 'router.menu1'
+        },
+        children: [
+          {
+            path: 'menu1-1',
+            name: 'Menu11',
+            component: '##',
+            redirect: '/level/menu1/menu1-1/menu1-1-1',
+            meta: {
+              title: 'router.menu11',
+              alwaysShow: true
+            },
+            children: [
+              {
+                path: 'menu1-1-1',
+                name: 'Menu111',
+                component: 'views/Level/Menu111',
+                meta: {
+                  title: 'router.menu111'
+                }
+              }
+            ]
+          },
+          {
+            path: 'menu1-2',
+            name: 'Menu12',
+            component: 'views/Level/Menu12',
+            meta: {
+              title: 'router.menu12'
+            }
+          }
+        ]
+      },
+      {
+        path: '
