@@ -500,3 +500,35 @@ const testList: string[] = [
   '/hooks/useWatermark',
   '/hooks/useCrudSchemas',
   '/level',
+  '/level/menu1',
+  '/level/menu1/menu1-1',
+  '/level/menu1/menu1-1/menu1-1-1',
+  '/level/menu1/menu1-2',
+  '/level/menu2',
+  '/example',
+  '/example/example-dialog',
+  '/example/example-page',
+  '/example/example-add',
+  '/example/example-edit',
+  '/example/example-detail',
+  '/error',
+  '/error/404-demo',
+  '/error/403-demo',
+  '/error/500-demo'
+]
+
+export default [
+  // 列表接口
+  {
+    url: '/role/list',
+    method: 'get',
+    timeout,
+    response: ({ query }) => {
+      const { roleName } = query
+      return {
+        code: result_code,
+        data: roleName === 'admin' ? adminList : testList
+      }
+    }
+  }
+] as MockMethod[]
