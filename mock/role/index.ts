@@ -398,4 +398,53 @@ const adminList = [
           activeMenu: '/example/example-page'
         }
       },
-    
+      {
+        path: 'example-edit',
+        component: 'views/Example/Page/ExampleEdit',
+        name: 'ExampleEdit',
+        meta: {
+          title: 'router.exampleEdit',
+          noTagsView: true,
+          noCache: true,
+          hidden: true,
+          showMainRoute: true,
+          activeMenu: '/example/example-page'
+        }
+      },
+      {
+        path: 'example-detail',
+        component: 'views/Example/Page/ExampleDetail',
+        name: 'ExampleDetail',
+        meta: {
+          title: 'router.exampleDetail',
+          noTagsView: true,
+          noCache: true,
+          hidden: true,
+          showMainRoute: true,
+          activeMenu: '/example/example-page'
+        }
+      }
+    ]
+  },
+  {
+    path: '/error',
+    component: '#',
+    redirect: '/error/404',
+    name: 'Error',
+    meta: {
+      title: 'router.errorPage',
+      icon: 'ci:error',
+      alwaysShow: true
+    },
+    children: [
+      {
+        path: '404-demo',
+        component: 'views/Error/404',
+        name: '404Demo',
+        meta: {
+          title: '404'
+        }
+      },
+      {
+        path: '403-demo',
+        component:
