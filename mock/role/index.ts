@@ -447,4 +447,56 @@ const adminList = [
       },
       {
         path: '403-demo',
-        component:
+        component: 'views/Error/403',
+        name: '403Demo',
+        meta: {
+          title: '403'
+        }
+      },
+      {
+        path: '500-demo',
+        component: 'views/Error/500',
+        name: '500Demo',
+        meta: {
+          title: '500'
+        }
+      }
+    ]
+  }
+]
+
+const testList: string[] = [
+  '/dashboard',
+  '/dashboard/analysis',
+  '/dashboard/workplace',
+  'external-link',
+  'https://element-plus-admin-doc.cn/',
+  '/guide',
+  '/guide/index',
+  '/components',
+  '/components/form',
+  '/components/form/default-form',
+  '/components/form/use-form',
+  '/components/form/ref-form',
+  '/components/table',
+  '/components/table/default-table',
+  '/components/table/use-table',
+  '/components/table/ref-table',
+  '/components/editor-demo',
+  '/components/editor-demo/editor',
+  '/components/search',
+  '/components/descriptions',
+  '/components/image-viewer',
+  '/components/dialog',
+  '/components/icon',
+  '/components/echart',
+  '/components/count-to',
+  '/components/qrcode',
+  '/components/highlight',
+  '/components/infotip',
+  '/Components/InputPassword',
+  '/Components/Sticky',
+  '/hooks',
+  '/hooks/useWatermark',
+  '/hooks/useCrudSchemas',
+  '/level',
