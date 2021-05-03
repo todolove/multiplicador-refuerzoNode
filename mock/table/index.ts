@@ -20,4 +20,57 @@ let List: {
   importance: number
   display_time: string
   pageviews: number
-}[] = 
+}[] = []
+
+for (let i = 0; i < count; i++) {
+  List.push(
+    Mock.mock({
+      id: toAnyString(),
+      // timestamp: +Mock.Random.date('T'),
+      author: '@first',
+      title: '@title(5, 10)',
+      content: baseContent,
+      importance: '@integer(1, 3)',
+      display_time: '@datetime',
+      pageviews: '@integer(300, 5000)'
+      // image_uri
+    })
+  )
+}
+
+export default [
+  // 列表接口
+  {
+    url: '/example/list',
+    method: 'get',
+    timeout,
+    response: ({ query }) => {
+      const { title, pageIndex, pageSize } = query
+      const mockList = List.filter((item) => {
+        if (title && item.title.indexOf(title) < 0) return false
+        return true
+      })
+      const pageList = mockList.filter(
+        (_, index) => index < pageSize * pageIndex && index >= pageSize * (pageIndex - 1)
+      )
+      return {
+        code: result_code,
+        data: {
+          total: mockList.length,
+          list: pageList
+        }
+      }
+    }
+  },
+  // 保存接口
+  {
+    url: '/example/save',
+    method: 'post',
+    timeout,
+    response: ({ body }) => {
+      if (!body.id) {
+        List = [
+          Object.assign(body, {
+            id: toAnyString()
+          })
+    
