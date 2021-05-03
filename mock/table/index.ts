@@ -129,4 +129,9 @@ export default [
         }
         return {
           code: result_code,
-   
+          data: 'success'
+        }
+      }
+    }
+  }
+] as MockMethod[]
