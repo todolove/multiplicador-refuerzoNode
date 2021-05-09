@@ -11,4 +11,27 @@ module.exports = {
     },
     {
       type: 'input',
-  
+      name: 'name',
+      message: '请输入模块名称（Please enter module name）'
+    }
+  ],
+  actions: (data) => {
+    const { name, path } = data
+    const upperFirstName = toUpperCase(name)
+
+    const actions = []
+    if (name) {
+      actions.push({
+        type: 'add',
+        path: `./src/${path}/${upperFirstName}.vue`,
+        templateFile: './plop/view/view.hbs',
+        data: {
+          name,
+          upperFirstName
+        }
+      })
+    }
+
+    return actions
+  }
+}
