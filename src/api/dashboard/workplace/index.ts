@@ -14,4 +14,9 @@ export const getDynamicApi = (): Promise<IResponse<Dynamic[]>> => {
 }
 
 export const getTeamApi = (): Promise<IResponse<Team[]>> => {
-  return re
+  return request.get({ url: '/workplace/team' })
+}
+
+export const getRadarApi = (): Promise<IResponse<RadarData[]>> => {
+  return request.get({ url: '/workplace/radar' })
+}
