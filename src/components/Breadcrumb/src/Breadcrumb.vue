@@ -77,3 +77,51 @@ export default defineComponent({
     )
 
     return () => (
+      <ElBreadcrumb separator="/" class={`${prefixCls} flex items-center h-full ml-[10px]`}>
+        <TransitionGroup appear enter-active-class="animate__animated animate__fadeInRight">
+          {renderBreadcrumb()}
+        </TransitionGroup>
+      </ElBreadcrumb>
+    )
+  }
+})
+</script>
+
+<style lang="less" scoped>
+@prefix-cls: ~'@{elNamespace}-breadcrumb';
+
+.@{prefix-cls} {
+  :deep(&__item) {
+    display: flex;
+    .@{prefix-cls}__inner {
+      display: flex;
+      align-items: center;
+      color: var(--top-header-text-color);
+
+      &:hover {
+        color: var(--el-color-primary);
+      }
+    }
+  }
+
+  :deep(&__item):not(:last-child) {
+    .@{prefix-cls}__inner {
+      color: var(--top-header-text-color);
+
+      &:hover {
+        color: var(--el-color-primary);
+      }
+    }
+  }
+
+  :deep(&__item):last-child {
+    .@{prefix-cls}__inner {
+      color: var(--el-text-color-placeholder);
+
+      &:hover {
+        color: var(--el-text-color-placeholder);
+      }
+    }
+  }
+}
+</style>
