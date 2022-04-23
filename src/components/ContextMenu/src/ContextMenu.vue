@@ -36,4 +36,37 @@ const visibleChange = (visible: boolean) => {
   emit('visibleChange', visible, props.tagItem)
 }
 
-const elD
+const elDropdownMenuRef = ref<ComponentRef<typeof ElDropdown>>()
+
+defineExpose({
+  elDropdownMenuRef,
+  tagItem: props.tagItem
+})
+</script>
+
+<template>
+  <ElDropdown
+    ref="elDropdownMenuRef"
+    :class="prefixCls"
+    :trigger="trigger"
+    placement="bottom-start"
+    @command="command"
+    @visible-change="visibleChange"
+    popper-class="v-context-menu-popper"
+  >
+    <slot></slot>
+    <template #dropdown>
+      <ElDropdownMenu>
+        <ElDropdownItem
+          v-for="(item, index) in schema"
+          :key="`dropdown${index}`"
+          :divided="item.divided"
+          :disabled="item.disabled"
+          :command="item"
+        >
+          <Icon :icon="item.icon" /> {{ t(item.label) }}
+        </ElDropdownItem>
+      </ElDropdownMenu>
+    </template>
+  </ElDropdown>
+</template>
