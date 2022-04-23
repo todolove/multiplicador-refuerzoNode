@@ -48,4 +48,16 @@ watch(
 // 多语言相关
 const localeStore = useLocaleStore()
 
-const currentLocale = computed(() => localeStore
+const currentLocale = computed(() => localeStore.currentLocale)
+</script>
+
+<template>
+  <ElConfigProvider
+    :namespace="variables.elNamespace"
+    :locale="currentLocale.elLocale"
+    :message="{ max: 1 }"
+    :size="size"
+  >
+    <slot></slot>
+  </ElConfigProvider>
+</template>
