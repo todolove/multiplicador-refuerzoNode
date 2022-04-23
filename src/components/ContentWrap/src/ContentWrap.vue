@@ -23,4 +23,11 @@ defineProps({
             <div class="max-w-200px">{{ message }}</div>
           </template>
           <Icon class="ml-5px" icon="bi:question-circle-fill" :size="14" />
-        
+        </ElTooltip>
+      </div>
+    </template>
+    <div>
+      <slot></slot>
+    </div>
+  </ElCard>
+</template>
