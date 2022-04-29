@@ -44,4 +44,51 @@ const getBindValue = computed(() => {
 })
 
 const getBindItemValue = (item: DescriptionsSchema) => {
-  const delArr: string
+  const delArr: string[] = ['field']
+  const obj = { ...item }
+  for (const key in obj) {
+    if (delArr.indexOf(key) !== -1) {
+      delete obj[key]
+    }
+  }
+  return obj
+}
+
+// 折叠
+const show = ref(true)
+
+const toggleClick = () => {
+  if (props.collapse) {
+    show.value = !unref(show)
+  }
+}
+</script>
+
+<template>
+  <div
+    :class="[
+      prefixCls,
+      'bg-[var(--el-color-white)] dark:(bg-[var(--el-bg-color)] border-[var(--el-border-color)] border-1px)'
+    ]"
+  >
+    <div
+      v-if="title"
+      :class="[
+        `${prefixCls}-header`,
+        'h-50px flex justify-between items-center border-bottom-1 border-solid border-[var(--tags-view-border-color)] px-10px cursor-pointer dark:border-[var(--el-border-color)]'
+      ]"
+      @click="toggleClick"
+    >
+      <div :class="[`${prefixCls}-header__title`, 'relative font-18px font-bold ml-10px']">
+        <div class="flex items-center">
+          {{ title }}
+          <ElTooltip v-if="message" :content="message" placement="right">
+            <Icon icon="ep:warning" class="ml-5px" />
+          </ElTooltip>
+        </div>
+      </div>
+      <Icon v-if="collapse" :icon="show ? 'ep:arrow-down' : 'ep:arrow-up'" />
+    </div>
+
+    <ElCollapseTransition>
+      <div v-show="s
