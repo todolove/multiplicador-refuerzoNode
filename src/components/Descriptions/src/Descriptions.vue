@@ -91,4 +91,46 @@ const toggleClick = () => {
     </div>
 
     <ElCollapseTransition>
-      <div v-show="s
+      <div v-show="show" :class="[`${prefixCls}-content`, 'p-10px']">
+        <ElDescriptions
+          :column="2"
+          border
+          :direction="mobile ? 'vertical' : 'horizontal'"
+          v-bind="getBindValue"
+        >
+          <template v-if="slots['extra']" #extra>
+            <slot name="extra"></slot>
+          </template>
+          <ElDescriptionsItem
+            v-for="item in schema"
+            :key="item.field"
+            v-bind="getBindItemValue(item)"
+          >
+            <template #label>
+              <slot
+                :name="`${item.field}-label`"
+                :row="{
+                  label: item.label
+                }"
+                >{{ item.label }}</slot
+              >
+            </template>
+
+            <template #default>
+              <slot :name="item.field" :row="data">{{ data[item.field] }}</slot>
+            </template>
+          </ElDescriptionsItem>
+        </ElDescriptions>
+      </div>
+    </ElCollapseTransition>
+  </div>
+</template>
+
+<style lang="less" scoped>
+@prefix-cls: ~'@{namespace}-descriptions';
+
+.@{prefix-cls}-header {
+  &__title {
+    &::after {
+      position: absolute;
+      top: 3px
