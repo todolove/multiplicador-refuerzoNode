@@ -133,4 +133,19 @@ const toggleClick = () => {
   &__title {
     &::after {
       position: absolute;
-      top: 3px
+      top: 3px;
+      left: -10px;
+      width: 4px;
+      height: 70%;
+      background: var(--el-color-primary);
+      content: '';
+    }
+  }
+}
+
+.@{prefix-cls}-content {
+  :deep(.@{elNamespace}-descriptions__cell) {
+    width: 0;
+  }
+}
+</style>
