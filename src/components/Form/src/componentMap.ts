@@ -42,4 +42,8 @@ const componentMap: Recordable<Component, ComponentName> = {
   TimeSelect: ElTimeSelect,
   SelectV2: ElSelectV2,
   RadioButton: ElRadioGroup,
-  InputPassword: InputPasswo
+  InputPassword: InputPassword,
+  Editor: Editor
+}
+
+export { componentMap }
