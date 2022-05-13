@@ -22,4 +22,12 @@ export function createImageViewer(options: ImageViewerProps) {
   propsData.urlList = urlList
   propsData.initialIndex = initialIndex
   propsData.infinite = infinite
-  propsData.hideOnClickModal
+  propsData.hideOnClickModal = hideOnClickModal
+  propsData.appendToBody = appendToBody
+  propsData.zIndex = zIndex
+  propsData.show = show
+
+  document.body.appendChild(container)
+  instance = createVNode(ImageViewer, propsData)
+  render(instance, container)
+}
