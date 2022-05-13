@@ -53,4 +53,26 @@ const updateIcon = async (icon: string) => {
     span.className = 'iconify'
     span.dataset.icon = icon
     el.textContent = ''
-    el.appendChild(span
+    el.appendChild(span)
+  }
+}
+
+watch(
+  () => props.icon,
+  (icon: string) => {
+    updateIcon(icon)
+  }
+)
+</script>
+
+<template>
+  <ElIcon :class="prefixCls" :size="size" :color="color">
+    <svg v-if="isLocal" aria-hidden="true">
+      <use :xlink:href="symbolId" />
+    </svg>
+
+    <span v-else ref="elRef" :class="$attrs.class" :style="getIconifyStyle">
+      <span class="iconify" :data-icon="symbolId"></span>
+    </span>
+  </ElIcon>
+</template>
