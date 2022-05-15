@@ -52,4 +52,46 @@ export default defineComponent({
     const activeMenu = computed(() => {
       const { meta, path } = unref(currentRoute)
       // if set path, the sidebar will highlight the path you set
-      
+      if (meta.activeMenu) {
+        return meta.activeMenu as string
+      }
+      return path
+    })
+
+    const menuSelect = (index: string) => {
+      if (props.menuSelect) {
+        props.menuSelect(index)
+      }
+      // 自定义事件
+      if (isUrl(index)) {
+        window.open(index)
+      } else {
+        push(index)
+      }
+    }
+
+    const renderMenuWrap = () => {
+      if (unref(layout) === 'top') {
+        return renderMenu()
+      } else {
+        return <ElScrollbar>{renderMenu()}</ElScrollbar>
+      }
+    }
+
+    const renderMenu = () => {
+      return (
+        <ElMenu
+          defaultActive={unref(activeMenu)}
+          mode={unref(menuMode)}
+          collapse={
+            unref(layout) === 'top' || unref(layout) === 'cutMenu' ? false : unref(collapse)
+          }
+          uniqueOpened={unref(layout) === 'top' ? false : unref(uniqueOpened)}
+          backgroundColor="var(--left-menu-bg-color)"
+          textColor="var(--left-menu-text-color)"
+          activeTextColor="var(--left-menu-text-active-color)"
+          onSelect={menuSelect}
+        >
+          {{
+            default: () => {
+              const { renderMenuItem } = useRenderMenuItem(unref(menuMode)
