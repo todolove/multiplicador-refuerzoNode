@@ -149,4 +149,51 @@ export default defineComponent({
 
   :deep(.@{elNamespace}-menu) {
     width: 100% !important;
-    border-right: non
+    border-right: none;
+
+    // 设置选中时子标题的颜色
+    .is-active {
+      & > .@{elNamespace}-sub-menu__title {
+        color: var(--left-menu-text-active-color) !important;
+      }
+    }
+
+    // 设置子菜单悬停的高亮和背景色
+    .@{elNamespace}-sub-menu__title,
+    .@{elNamespace}-menu-item {
+      &:hover {
+        color: var(--left-menu-text-active-color) !important;
+        background-color: var(--left-menu-bg-color) !important;
+      }
+    }
+
+    // 设置选中时的高亮背景和高亮颜色
+    .@{elNamespace}-sub-menu.is-active,
+    .@{elNamespace}-menu-item.is-active {
+      color: var(--left-menu-text-active-color) !important;
+      background-color: var(--left-menu-bg-active-color) !important;
+
+      &:hover {
+        background-color: var(--left-menu-bg-active-color) !important;
+      }
+    }
+
+    .@{elNamespace}-menu-item.is-active {
+      position: relative;
+
+      &:after {
+        .is-active--after;
+      }
+    }
+
+    // 设置子菜单的背景颜色
+    .@{elNamespace}-menu {
+      .@{elNamespace}-sub-menu__title,
+      .@{elNamespace}-menu-item:not(.is-active) {
+        background-color: var(--left-menu-bg-light-color) !important;
+      }
+    }
+  }
+
+  // 折叠时的最小宽度
+  :deep(.@{elNamespace}-menu--col
