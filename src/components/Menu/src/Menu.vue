@@ -196,4 +196,49 @@ export default defineComponent({
   }
 
   // 折叠时的最小宽度
-  :deep(.@{elNamespace}-menu--col
+  :deep(.@{elNamespace}-menu--collapse) {
+    width: var(--left-menu-min-width);
+
+    & > .is-active,
+    & > .is-active > .@{elNamespace}-sub-menu__title {
+      position: relative;
+      background-color: var(--left-menu-collapse-bg-active-color) !important;
+
+      &:after {
+        .is-active--after;
+      }
+    }
+  }
+
+  // 折叠动画的时候，就需要把文字给隐藏掉
+  :deep(.horizontal-collapse-transition) {
+    // transition: 0s width ease-in-out, 0s padding-left ease-in-out, 0s padding-right ease-in-out !important;
+    .@{prefix-cls}__title {
+      display: none;
+    }
+  }
+
+  // 水平菜单
+  &__horizontal {
+    height: calc(~'var(--top-tool-height)') !important;
+
+    :deep(.@{elNamespace}-menu--horizontal) {
+      height: calc(~'var(--top-tool-height)');
+      border-bottom: none;
+      // 重新设置底部高亮颜色
+      & > .@{elNamespace}-sub-menu.is-active {
+        .@{elNamespace}-sub-menu__title {
+          border-bottom-color: var(--el-color-primary) !important;
+        }
+      }
+
+      .@{elNamespace}-menu-item.is-active {
+        position: relative;
+
+        &:after {
+          display: none !important;
+        }
+      }
+
+      .@{prefix-cls}__title {
+        /* s
