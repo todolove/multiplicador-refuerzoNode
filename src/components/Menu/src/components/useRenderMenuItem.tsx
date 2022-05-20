@@ -50,3 +50,11 @@ export const useRenderMenuItem = (
             </ElSubMenu>
           )
         }
+      }
+    })
+  }
+
+  return {
+    renderMenuItem
+  }
+}
