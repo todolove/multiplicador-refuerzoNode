@@ -24,4 +24,51 @@ const props = defineProps({
   // 操作按钮风格位置
   layout: propTypes.string.validate((v: string) => ['inline', 'bottom'].includes(v)).def('inline'),
   // 底部按钮的对齐方式
-  buttomPosition: prop
+  buttomPosition: propTypes.string
+    .validate((v: string) => ['left', 'center', 'right'].includes(v))
+    .def('center'),
+  showSearch: propTypes.bool.def(true),
+  showReset: propTypes.bool.def(true),
+  // 是否显示伸缩
+  expand: propTypes.bool.def(false),
+  // 伸缩的界限字段
+  expandField: propTypes.string.def(''),
+  inline: propTypes.bool.def(true),
+  model: {
+    type: Object as PropType<Recordable>,
+    default: () => ({})
+  }
+})
+
+const emit = defineEmits(['search', 'reset'])
+
+const visible = ref(true)
+
+const newSchema = computed(() => {
+  let schema: FormSchema[] = cloneDeep(props.schema)
+  if (props.expand && props.expandField && !unref(visible)) {
+    const index = findIndex(schema, (v: FormSchema) => v.field === props.expandField)
+    if (index > -1) {
+      const length = schema.length
+      schema.splice(index + 1, length)
+    }
+  }
+  if (props.layout === 'inline') {
+    schema = schema.concat([
+      {
+        field: 'action',
+        formItemProps: {
+          labelWidth: '0px'
+        }
+      }
+    ])
+  }
+  return schema
+})
+
+const { register, elFormRef, methods } = useForm({
+  model: props.model || {}
+})
+
+const search = async () => {
+  await unref
