@@ -71,4 +71,51 @@ const { register, elFormRef, methods } = useForm({
 })
 
 const search = async () => {
-  await unref
+  await unref(elFormRef)?.validate(async (isValid) => {
+    if (isValid) {
+      const { getFormData } = methods
+      const model = await getFormData()
+      emit('search', model)
+    }
+  })
+}
+
+const reset = async () => {
+  unref(elFormRef)?.resetFields()
+  const { getFormData } = methods
+  const model = await getFormData()
+  emit('reset', model)
+}
+
+const bottonButtonStyle = computed(() => {
+  return {
+    textAlign: props.buttomPosition as unknown as 'left' | 'center' | 'right'
+  }
+})
+
+const setVisible = () => {
+  unref(elFormRef)?.resetFields()
+  visible.value = !unref(visible)
+}
+</script>
+
+<template>
+  <Form
+    :is-custom="false"
+    :label-width="labelWidth"
+    hide-required-asterisk
+    :inline="inline"
+    :is-col="isCol"
+    :schema="newSchema"
+    @register="register"
+  >
+    <template #action>
+      <div v-if="layout === 'inline'">
+        <ElButton v-if="showSearch" type="primary" @click="search">
+          <Icon icon="ep:search" class="mr-5px" />
+          {{ t('common.query') }}
+        </ElButton>
+        <ElButton v-if="showReset" @click="reset">
+          <Icon icon="ep:refresh-right" class="mr-5px" />
+          {{ t('common.reset') }}
+        </ElButto
