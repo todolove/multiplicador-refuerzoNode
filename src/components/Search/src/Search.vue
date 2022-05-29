@@ -118,4 +118,29 @@ const setVisible = () => {
         <ElButton v-if="showReset" @click="reset">
           <Icon icon="ep:refresh-right" class="mr-5px" />
           {{ t('common.reset') }}
-        </ElButto
+        </ElButton>
+        <ElButton v-if="expand" text @click="setVisible">
+          {{ t(visible ? 'common.shrink' : 'common.expand') }}
+          <Icon :icon="visible ? 'ant-design:up-outlined' : 'ant-design:down-outlined'" />
+        </ElButton>
+      </div>
+    </template>
+  </Form>
+
+  <template v-if="layout === 'bottom'">
+    <div :style="bottonButtonStyle">
+      <ElButton v-if="showSearch" type="primary" @click="search">
+        <Icon icon="ep:search" class="mr-5px" />
+        {{ t('common.query') }}
+      </ElButton>
+      <ElButton v-if="showReset" @click="reset">
+        <Icon icon="ep:refresh-right" class="mr-5px" />
+        {{ t('common.reset') }}
+      </ElButton>
+      <ElButton v-if="expand" text @click="setVisible">
+        {{ t(visible ? 'common.shrink' : 'common.expand') }}
+        <Icon :icon="visible ? 'ant-design:up-outlined' : 'ant-design:down-outlined'" />
+      </ElButton>
+    </div>
+  </template>
+</template>
