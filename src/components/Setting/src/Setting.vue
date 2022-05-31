@@ -211,3 +211,92 @@ const clear = () => {
 
   <ElDrawer v-model="drawer" direction="rtl" size="350px" :z-index="4000">
     <template #header>
+      <span class="text-16px font-700">{{ t('setting.projectSetting') }}</span>
+    </template>
+
+    <div class="text-center">
+      <!-- 主题 -->
+      <ElDivider>{{ t('setting.theme') }}</ElDivider>
+      <ThemeSwitch />
+
+      <!-- 布局 -->
+      <ElDivider>{{ t('setting.layout') }}</ElDivider>
+      <LayoutRadioPicker />
+
+      <!-- 系统主题 -->
+      <ElDivider>{{ t('setting.systemTheme') }}</ElDivider>
+      <ColorRadioPicker
+        v-model="systemTheme"
+        :schema="[
+          '#409eff',
+          '#009688',
+          '#536dfe',
+          '#ff5c93',
+          '#ee4f12',
+          '#0096c7',
+          '#9c27b0',
+          '#ff9800'
+        ]"
+        @change="setSystemTheme"
+      />
+
+      <!-- 头部主题 -->
+      <ElDivider>{{ t('setting.headerTheme') }}</ElDivider>
+      <ColorRadioPicker
+        v-model="headerTheme"
+        :schema="[
+          '#fff',
+          '#151515',
+          '#5172dc',
+          '#e74c3c',
+          '#24292e',
+          '#394664',
+          '#009688',
+          '#383f45'
+        ]"
+        @change="setHeaderTheme"
+      />
+
+      <!-- 菜单主题 -->
+      <template v-if="layout !== 'top'">
+        <ElDivider>{{ t('setting.menuTheme') }}</ElDivider>
+        <ColorRadioPicker
+          v-model="menuTheme"
+          :schema="[
+            '#fff',
+            '#001529',
+            '#212121',
+            '#273352',
+            '#191b24',
+            '#383f45',
+            '#001628',
+            '#344058'
+          ]"
+          @change="setMenuTheme"
+        />
+      </template>
+    </div>
+
+    <!-- 界面显示 -->
+    <ElDivider>{{ t('setting.interfaceDisplay') }}</ElDivider>
+    <InterfaceDisplay />
+
+    <ElDivider />
+    <div>
+      <ElButton type="primary" class="w-full" @click="copyConfig">{{ t('setting.copy') }}</ElButton>
+    </div>
+    <div class="mt-5px">
+      <ElButton type="danger" class="w-full" @click="clear">
+        {{ t('setting.clearAndReset') }}
+      </ElButton>
+    </div>
+  </ElDrawer>
+</template>
+
+<style lang="less" scoped>
+@prefix-cls: ~'@{namespace}-setting';
+
+.@{prefix-cls} {
+  border-radius: 6px 0 0 6px;
+}
+</style>
