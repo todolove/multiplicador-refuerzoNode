@@ -30,4 +30,23 @@ export const filterMenusPath = (
     if (!meta.hidden || meta.canTo) {
       const allParentPath = getAllParentPath<AppRouteRecordRaw>(allRoutes, v.path)
 
-      const fullPath = isUrl(v.path) ? v.path : allParentPath.join('
+      const fullPath = isUrl(v.path) ? v.path : allParentPath.join('/')
+
+      data = cloneDeep(v)
+      data.path = fullPath
+      if (v.children && data) {
+        data.children = filterMenusPath(v.children, allRoutes)
+      }
+
+      if (data) {
+        res.push(data)
+      }
+
+      if (allParentPath.length && Reflect.has(tabPathMap, allParentPath[0])) {
+        tabPathMap[allParentPath[0]].push(fullPath)
+      }
+    }
+  }
+
+  return res
+}
