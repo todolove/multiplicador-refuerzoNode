@@ -355,3 +355,229 @@ watch(
                   class="h-full flex justify-center items-center whitespace-nowrap pl-15px"
                 >
                   <Icon
+                    v-if="
+                      item?.matched &&
+                      item?.matched[1] &&
+                      item?.matched[1]?.meta?.icon &&
+                      tagsViewIcon
+                    "
+                    :icon="item?.matched[1]?.meta?.icon"
+                    :size="12"
+                    class="mr-5px"
+                  />
+                  {{ t(item?.meta?.title as string) }}
+                  <Icon
+                    :class="`${prefixCls}__item--close`"
+                    color="#333"
+                    icon="ant-design:close-outlined"
+                    :size="12"
+                    @click.prevent.stop="closeSelectedTag(item)"
+                  />
+                </div>
+              </router-link>
+            </div>
+          </ContextMenu>
+        </div>
+      </ElScrollbar>
+    </div>
+    <span
+      :class="`${prefixCls}__tool`"
+      class="w-[var(--tags-view-height)] h-[var(--tags-view-height)] text-center leading-[var(--tags-view-height)] cursor-pointer"
+      @click="move(200)"
+    >
+      <Icon
+        icon="ep:d-arrow-right"
+        :color="appStore.getIsDark ? 'var(--el-text-color-regular)' : '#333'"
+      />
+    </span>
+    <span
+      :class="`${prefixCls}__tool`"
+      class="w-[var(--tags-view-height)] h-[var(--tags-view-height)] text-center leading-[var(--tags-view-height)] cursor-pointer"
+      @click="refreshSelectedTag(selectedTag)"
+    >
+      <Icon
+        icon="ant-design:reload-outlined"
+        :color="appStore.getIsDark ? 'var(--el-text-color-regular)' : '#333'"
+      />
+    </span>
+    <ContextMenu
+      trigger="click"
+      :schema="[
+        {
+          icon: 'ant-design:sync-outlined',
+          label: t('common.reload'),
+          command: () => {
+            refreshSelectedTag(selectedTag)
+          }
+        },
+        {
+          icon: 'ant-design:close-outlined',
+          label: t('common.closeTab'),
+          disabled: !!visitedViews?.length && selectedTag?.meta.affix,
+          command: () => {
+            closeSelectedTag(selectedTag!)
+          }
+        },
+        {
+          divided: true,
+          icon: 'ant-design:vertical-right-outlined',
+          label: t('common.closeTheLeftTab'),
+          disabled: !!visitedViews?.length && selectedTag?.fullPath === visitedViews[0].fullPath,
+          command: () => {
+            closeLeftTags()
+          }
+        },
+        {
+          icon: 'ant-design:vertical-left-outlined',
+          label: t('common.closeTheRightTab'),
+          disabled:
+            !!visitedViews?.length &&
+            selectedTag?.fullPath === visitedViews[visitedViews.length - 1].fullPath,
+          command: () => {
+            closeRightTags()
+          }
+        },
+        {
+          divided: true,
+          icon: 'ant-design:tag-outlined',
+          label: t('common.closeOther'),
+          command: () => {
+            closeOthersTags()
+          }
+        },
+        {
+          icon: 'ant-design:line-outlined',
+          label: t('common.closeAll'),
+          command: () => {
+            closeAllTags()
+          }
+        }
+      ]"
+    >
+      <span
+        :class="`${prefixCls}__tool`"
+        class="w-[var(--tags-view-height)] h-[var(--tags-view-height)] text-center leading-[var(--tags-view-height)] cursor-pointer block"
+      >
+        <Icon
+          icon="ant-design:setting-outlined"
+          :color="appStore.getIsDark ? 'var(--el-text-color-regular)' : '#333'"
+        />
+      </span>
+    </ContextMenu>
+  </div>
+</template>
+
+<style lang="less" scoped>
+@prefix-cls: ~'@{namespace}-tags-view';
+
+.@{prefix-cls} {
+  :deep(.@{elNamespace}-scrollbar__view) {
+    height: 100%;
+  }
+
+  &__tool {
+    position: relative;
+
+    &:hover {
+      :deep(span) {
+        color: var(--el-color-black) !important;
+      }
+    }
+
+    &:after {
+      position: absolute;
+      top: 1px;
+      left: 0;
+      width: 100%;
+      height: calc(~'100% - 1px');
+      border-right: 1px solid var(--tags-view-border-color);
+      border-left: 1px solid var(--tags-view-border-color);
+      content: '';
+    }
+  }
+
+  &__item {
+    position: relative;
+    top: 2px;
+    height: calc(~'100% - 4px');
+    padding-right: 25px;
+    margin-left: 4px;
+    font-size: 12px;
+    cursor: pointer;
+    border: 1px solid #d9d9d9;
+
+    &--close {
+      position: absolute;
+      top: 50%;
+      right: 5px;
+      display: none;
+      transform: translate(0, -50%);
+    }
+    &:not(.@{prefix-cls}__item--affix):hover {
+      .@{prefix-cls}__item--close {
+        display: block;
+      }
+    }
+  }
+
+  &__item:not(.is-active) {
+    &:hover {
+      color: var(--el-color-primary);
+    }
+  }
+
+  &__item.is-active {
+    color: var(--el-color-white);
+    background-color: var(--el-color-primary);
+    border: 1px solid var(--el-color-primary);
+    .@{prefix-cls}__item--close {
+      :deep(span) {
+        color: var(--el-color-white) !important;
+      }
+    }
+  }
+}
+
+.dark {
+  .@{prefix-cls} {
+    &__tool {
+      &:hover {
+        :deep(span) {
+          color: #fff !important;
+        }
+      }
+
+      &:after {
+        border-right: 1px solid var(--el-border-color);
+        border-left: 1px solid var(--el-border-color);
+      }
+    }
+
+    &__item {
+      position: relative;
+      top: 2px;
+      height: calc(~'100% - 4px');
+      padding-right: 25px;
+      font-size: 12px;
+      cursor: pointer;
+      border: 1px solid var(--el-border-color);
+    }
+
+    &__item:not(.is-active) {
+      &:hover {
+        color: var(--el-color-primary);
+      }
+    }
+
+    &__item.is-active {
+      color: var(--el-color-white);
+      background-color: var(--el-color-primary);
+      .@{prefix-cls}__item--close {
+        :deep(span) {
+          color: var(--el-color-white) !important;
+        }
+      }
+    }
+  }
+}
+</style>
