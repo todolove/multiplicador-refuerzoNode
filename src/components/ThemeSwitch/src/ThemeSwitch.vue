@@ -33,4 +33,15 @@ const themeChange = (val: boolean) => {
     inline-prompt
     :border-color="blackColor"
     :inactive-color="blackColor"
-    :active-color="blackColo
+    :active-color="blackColor"
+    :active-icon="Sun"
+    :inactive-icon="CrescentMoon"
+    @change="themeChange"
+  />
+</template>
+
+<style lang="less" scoped>
+:deep(.el-switch__core .el-switch__inner .is-icon) {
+  overflow: visible;
+}
+</style>
