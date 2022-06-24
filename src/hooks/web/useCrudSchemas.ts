@@ -192,3 +192,63 @@ const filterFormSchema = (crudSchema: CrudSchema[], allSchemas: AllSchemas): For
           const res = await (formSchemaItem.api as () => AxiosPromise)()
           if (res) {
             const index = findIndex(allSchemas.formSchema, (v: FormSchema) => {
+              return v.field === formSchemaItem.field
+            })
+            if (index !== -1) {
+              allSchemas.formSchema[index]!.componentProps!.options = filterOptions(
+                res,
+                formSchemaItem.componentProps.optionsAlias?.labelField
+              )
+            }
+          }
+        })
+      }
+
+      // 删除不必要的字段
+      delete formSchemaItem.show
+      delete formSchemaItem.dictName
+
+      formSchema.push(formSchemaItem)
+    }
+  })
+
+  for (const task of formRequestTask) {
+    task()
+  }
+  return formSchema
+}
+
+// 过滤 descriptions 结构
+const filterDescriptionsSchema = (crudSchema: CrudSchema[]): DescriptionsSchema[] => {
+  const descriptionsSchema: FormSchema[] = []
+
+  eachTree(crudSchema, (schemaItem: CrudSchema) => {
+    // 判断是否显示
+    if (schemaItem?.detail?.show !== false) {
+      const descriptionsSchemaItem = {
+        ...schemaItem.detail,
+        field: schemaItem.field,
+        label: schemaItem.detail?.label || schemaItem.label
+      }
+
+      // 删除不必要的字段
+      delete descriptionsSchemaItem.show
+
+      descriptionsSchema.push(descriptionsSchemaItem)
+    }
+  })
+
+  return descriptionsSchema
+}
+
+// 给options添加国际化
+const filterOptions = (options: Recordable, labelField?: string) => {
+  return options?.map((v: Recordable) => {
+    if (labelField) {
+      v['labelField'] = t(v.labelField)
+    } else {
+      v['label'] = t(v.label)
+    }
+    return v
+  })
+}
