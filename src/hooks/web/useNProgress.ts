@@ -11,4 +11,24 @@ export const useNProgress = () => {
 
   const initColor = async () => {
     await nextTick()
-    const bar = document.getElementById('nprogress')?.getElementsByClassName('bar')[0] as ElR
+    const bar = document.getElementById('nprogress')?.getElementsByClassName('bar')[0] as ElRef
+    if (bar) {
+      bar.style.background = unref(primaryColor.value)
+    }
+  }
+
+  initColor()
+
+  const start = () => {
+    NProgress.start()
+  }
+
+  const done = () => {
+    NProgress.done()
+  }
+
+  return {
+    start,
+    done
+  }
+}
