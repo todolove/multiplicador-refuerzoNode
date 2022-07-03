@@ -33,4 +33,18 @@ const TIME_AGO_MESSAGE_MAP: {
       n === 1 ? (past ? 'last week' : 'next week') : `${n} week${n > 1 ? 's' : ''}`,
     hour: (n) => `${n} hour${n > 1 ? 's' : ''}`,
     minute: (n) => `${n} minute${n > 1 ? 's' : ''}`,
-    second: (n) => `${n} second${n > 1 
+    second: (n) => `${n} second${n > 1 ? 's' : ''}`
+  }
+}
+
+export const useTimeAgo = (time: Date | number | string) => {
+  const localeStore = useLocaleStoreWithOut()
+
+  const currentLocale = computed(() => localeStore.getCurrentLocale)
+
+  const timeAgo = useTimeAgoCore(time, {
+    messages: TIME_AGO_MESSAGE_MAP[unref(currentLocale).lang]
+  })
+
+  return timeAgo
+}
