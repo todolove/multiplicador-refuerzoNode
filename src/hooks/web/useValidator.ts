@@ -36,4 +36,29 @@ export const useValidator = () => {
     }
   }
 
-  const notSpecialChara
+  const notSpecialCharacters = (val: any, callback: Callback, message: string) => {
+    // 密码不能是特殊字符
+    if (/[`~!@#$%^&*()_+<>?:"{},.\/;'[\]]/gi.test(val)) {
+      callback(new Error(message))
+    } else {
+      callback()
+    }
+  }
+
+  // 两个字符串是否想等
+  const isEqual = (val1: string, val2: string, callback: Callback, message: string) => {
+    if (val1 === val2) {
+      callback()
+    } else {
+      callback(new Error(message))
+    }
+  }
+
+  return {
+    required,
+    lengthRange,
+    notSpace,
+    notSpecialCharacters,
+    isEqual
+  }
+}
