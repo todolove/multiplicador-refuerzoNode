@@ -51,4 +51,28 @@ export default defineComponent({
         {mobile.value && !collapse.value ? (
           <div
             class="absolute top-0 left-0 w-full h-full opacity-30 z-99 bg-[var(--el-color-black)]"
-       
+            onClick={handleClickOutside}
+          ></div>
+        ) : undefined}
+
+        {renderLayout()}
+
+        <Backtop></Backtop>
+
+        <Setting></Setting>
+      </section>
+    )
+  }
+})
+</script>
+
+<style lang="less" scoped>
+@prefix-cls: ~'@{namespace}-layout';
+
+.@{prefix-cls} {
+  background-color: var(--app-content-bg-color);
+  :deep(.@{elNamespace}-scrollbar__view) {
+    height: 100% !important;
+  }
+}
+</style>
