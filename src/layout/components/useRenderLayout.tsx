@@ -184,3 +184,94 @@ export const useRenderLayout = () => {
           >
             {tagsView.value ? (
               <TagsView
+                class={[
+                  'border-bottom-1 border-top-1 border-solid border-[var(--tags-view-border-color)] dark:border-[var(--el-border-color)]',
+                  {
+                    '!fixed w-full top-[var(--top-tool-height)] left-0': fixedHeader.value
+                  }
+                ]}
+                style="transition: width var(--transition-time-02), left var(--transition-time-02);"
+              ></TagsView>
+            ) : undefined}
+
+            <AppView></AppView>
+          </ElScrollbar>
+        </div>
+      </>
+    )
+  }
+
+  const renderCutMenu = () => {
+    return (
+      <>
+        <div class="flex items-center bg-[var(--top-header-bg-color)] border-bottom-1 border-solid border-[var(--top-tool-border-color)] dark:border-[var(--el-border-color)]">
+          {logo.value ? <Logo class="hover-trigger !pr-15px"></Logo> : undefined}
+
+          <ToolHeader class="flex-1"></ToolHeader>
+        </div>
+        <div class="absolute top-[var(--logo-height)] left-0 w-full h-[calc(100%-var(--logo-height))] flex">
+          <TabMenu></TabMenu>
+          <div
+            class={[
+              `${prefixCls}-content`,
+              'h-[100%]',
+              {
+                'w-[calc(100%-var(--tab-menu-min-width))] left-[var(--tab-menu-min-width)]':
+                  collapse.value && !fixedMenu.value,
+                'w-[calc(100%-var(--tab-menu-max-width))] left-[var(--tab-menu-max-width)]':
+                  !collapse.value && !fixedMenu.value,
+                'w-[calc(100%-var(--tab-menu-min-width)-var(--left-menu-max-width))] ml-[var(--left-menu-max-width)]':
+                  collapse.value && fixedMenu.value,
+                'w-[calc(100%-var(--tab-menu-max-width)-var(--left-menu-max-width))] ml-[var(--left-menu-max-width)]':
+                  !collapse.value && fixedMenu.value
+              }
+            ]}
+            style="transition: all var(--transition-time-02);"
+          >
+            <ElScrollbar
+              v-loading={pageLoading.value}
+              class={[
+                `${prefixCls}-content-scrollbar`,
+                {
+                  '!h-[calc(100%-var(--tags-view-height))] mt-[calc(var(--tags-view-height))]':
+                    fixedHeader.value && tagsView.value
+                }
+              ]}
+            >
+              {tagsView.value ? (
+                <TagsView
+                  class={[
+                    'border-bottom-1 border-top-1 border-solid border-[var(--tags-view-border-color)] dark:border-[var(--el-border-color)]',
+                    {
+                      '!fixed top-0 left-0 z-10': fixedHeader.value,
+                      'w-[calc(100%-var(--tab-menu-min-width))] left-[var(--tab-menu-min-width)] mt-[var(--logo-height)]':
+                        collapse.value && fixedHeader.value,
+                      'w-[calc(100%-var(--tab-menu-max-width))] left-[var(--tab-menu-max-width)] mt-[var(--logo-height)]':
+                        !collapse.value && fixedHeader.value,
+                      '!fixed top-0 left-[var(--tab-menu-min-width)+var(--left-menu-max-width)] z-10':
+                        fixedHeader.value && fixedMenu.value,
+                      'w-[calc(100%-var(--tab-menu-min-width)-var(--left-menu-max-width))] left-[var(--tab-menu-min-width)+var(--left-menu-max-width)] mt-[var(--logo-height)]':
+                        collapse.value && fixedHeader.value && fixedMenu.value,
+                      'w-[calc(100%-var(--tab-menu-max-width)-var(--left-menu-max-width))] left-[var(--tab-menu-max-width)+var(--left-menu-max-width)] mt-[var(--logo-height)]':
+                        !collapse.value && fixedHeader.value && fixedMenu.value
+                    }
+                  ]}
+                  style="transition: width var(--transition-time-02), left var(--transition-time-02);"
+                ></TagsView>
+              ) : undefined}
+
+              <AppView></AppView>
+            </ElScrollbar>
+          </div>
+        </div>
+      </>
+    )
+  }
+
+  return {
+    renderClassic,
+    renderTopLeft,
+    renderTop,
+    renderCutMenu
+  }
+}
