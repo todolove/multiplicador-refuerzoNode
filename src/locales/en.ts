@@ -72,4 +72,45 @@ export default {
     clearAndReset: 'Clear cache and reset',
     copySuccess: 'Copy success',
     copyFailed: 'Copy failed',
- 
+    footer: 'Footer',
+    uniqueOpened: 'Unique opened',
+    tagsViewIcon: 'Tags view icon',
+    dynamicRouter: 'Dynamic router',
+    reExperienced: 'Please exit the login experience again',
+    fixedMenu: 'Fixed menu'
+  },
+  size: {
+    default: 'Default',
+    large: 'Large',
+    small: 'Small'
+  },
+  login: {
+    welcome: 'Welcome to the system',
+    message: 'Backstage management system',
+    username: 'Username',
+    password: 'Password',
+    register: 'Register',
+    checkPassword: 'Confirm password',
+    login: 'Sign in',
+    otherLogin: 'Sign in with',
+    remember: 'Remember me',
+    hasUser: 'Existing account? Go to login',
+    forgetPassword: 'Forget password',
+    usernamePlaceholder: 'Please input username',
+    passwordPlaceholder: 'Please input password',
+    code: 'Verification code',
+    codePlaceholder: 'Please input verification code'
+  },
+  router: {
+    login: 'Login',
+    level: 'Multi level menu',
+    menu: 'Menu',
+    menu1: 'Menu1',
+    menu11: 'Menu1-1',
+    menu111: 'Menu1-1-1',
+    menu12: 'Menu1-2',
+    menu2: 'Menu2',
+    dashboard: 'Dashboard',
+    analysis: 'Analysis',
+    workplace: 'Workplace',
+    guide
