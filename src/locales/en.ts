@@ -242,4 +242,38 @@ export default {
     dates: 'Dates',
     daterange: 'Date Range',
     monthrange: 'Month Range',
-    dateTimePicker: 'Date
+    dateTimePicker: 'DateTimePicker',
+    dateTimerange: 'Datetime Range',
+    timePicker: 'Time Picker',
+    timeSelect: 'Time Select',
+    inputPassword: 'input Password',
+    passwordStrength: 'Password Strength',
+    defaultForm: 'All examples',
+    formDes:
+      'The secondary encapsulation of form components based on ElementPlus realizes data-driven and supports all Form parameters',
+    example: 'example',
+    operate: 'operate',
+    change: 'Change',
+    restore: 'Restore',
+    disabled: 'Disabled',
+    disablement: 'Disablement',
+    delete: 'Delete',
+    add: 'Add',
+    setValue: 'Set value',
+    resetValue: 'Reset value',
+    set: 'Set',
+    subitem: 'Subitem',
+    formValidation: 'Form validation',
+    verifyReset: 'Verify reset'
+  },
+  guideDemo: {
+    guide: 'Guide',
+    start: 'Start',
+    message:
+      'The guide page is very useful for some people who enter the project for the first time. You can briefly introduce the functions of the project. The boot page is based on intro js'
+  },
+  iconDemo: {
+    icon: 'Icon',
+    localIcon: 'Local Icon',
+    iconify: 'Iconify component',
+    recommendedUse: 'Recommended 
