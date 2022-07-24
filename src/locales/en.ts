@@ -313,4 +313,48 @@ export default {
     imgTag: 'Img tag',
     style: 'Style config',
     click: 'Click event',
-    asynchr
+    asynchronousContent: 'Asynchronous content',
+    invalid: 'Invalid',
+    logoConfig: 'Logo config',
+    logoStyle: 'Logo style',
+    size: 'size config'
+  },
+  highlightDemo: {
+    highlight: 'Highlight',
+    message: 'The best time to plant a tree is ten years ago, followed by now.',
+    keys1: 'ten years ago',
+    keys2: 'now'
+  },
+  infotipDemo: {
+    infotip: 'Infotip',
+    infotipDes: 'Secondary packaging of components based on Highlight',
+    title: 'matters needing attention'
+  },
+  levelDemo: {
+    menu: 'Multi level menu cache'
+  },
+  searchDemo: {
+    search: 'Search',
+    searchDes:
+      'Based on the secondary encapsulation of form components, the functions of query and reset are realized',
+    operate: 'operate',
+    change: 'Change',
+    grid: 'grid',
+    button: 'Button',
+    restore: 'Restore',
+    inline: 'inline',
+    bottom: 'Bottom',
+    position: 'position',
+    left: 'left',
+    center: 'center',
+    right: 'right',
+    dynamicOptions: 'Dynamic options'
+  },
+  stickyDemo: {
+    sticky: 'Sticky'
+  },
+  tableDemo: {
+    table: 'Table',
+    tableDes: 'Secondary packaging of Table components based on ElementPlus',
+    index: 'Index',
+    title: 'Tit
