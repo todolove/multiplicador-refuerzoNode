@@ -398,4 +398,41 @@ export default {
     imageViewer: 'Image viewer',
     imageViewerDes: 'Secondary packaging of ImageViewer components based on ElementPlus'
   },
-  descri
+  descriptionsDemo: {
+    descriptions: 'Descriptions',
+    descriptionsDes: 'Secondary packaging of Descriptions components based on ElementPlus',
+    username: 'Username',
+    nickName: 'NickName',
+    phone: 'Phone',
+    email: 'Email',
+    addr: 'Address',
+    form: 'Combined with Form component'
+  },
+  exampleDemo: {
+    title: 'Title',
+    add: 'Add',
+    del: 'Delete',
+    edit: 'Edit',
+    author: 'Author',
+    displayTime: 'Display time',
+    importance: 'Importance',
+    pageviews: 'Pageviews',
+    important: 'Important',
+    content: 'Content',
+    save: 'Save',
+    detail: 'Detail'
+  },
+  userDemo: {
+    title: 'User management',
+    message:
+      'Because it is simulated data, only two accounts with different permissions are provided, which can be modified and combined by developers according to the actual situation.',
+    index: 'Index',
+    action: 'Action',
+    username: 'Username',
+    password: 'Password',
+    role: 'Role',
+    remark: 'Remark',
+    remarkMessage1: 'Back end control routing permission',
+    remarkMessage2: 'Front end control routing permission'
+  },
+  inputPasswordDemo
