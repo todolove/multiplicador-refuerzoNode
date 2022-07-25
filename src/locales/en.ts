@@ -357,4 +357,45 @@ export default {
     table: 'Table',
     tableDes: 'Secondary packaging of Table components based on ElementPlus',
     index: 'Index',
-    title: 'Tit
+    title: 'Title',
+    author: 'Author',
+    displayTime: 'Display time',
+    importance: 'Importance',
+    pageviews: 'Pageviews',
+    action: 'Action',
+    important: 'Important',
+    good: 'Good',
+    commonly: 'Commonly',
+    operate: 'operate',
+    example: 'example',
+    show: 'Show',
+    hidden: 'Hidden',
+    pagination: 'pagination',
+    reserveIndex: 'Reserve index',
+    restoreIndex: 'Restore index',
+    showSelections: 'Show selections',
+    hiddenSelections: 'Restore selections',
+    showExpandedRows: 'Show expanded rows',
+    hiddenExpandedRows: 'Hidden expanded rows',
+    changeTitle: 'Change title',
+    header: 'Header',
+    selectAllNone: 'Select all / none'
+  },
+  richText: {
+    richText: 'Rich text',
+    richTextDes: 'Secondary packaging based on wangeditor'
+  },
+  dialogDemo: {
+    dialog: 'Dialog',
+    dialogDes: 'Secondary packaging of Dialog components based on ElementPlus',
+    open: 'Open',
+    close: 'Close',
+    combineWithForm: 'Combine with form',
+    submit: 'Submit'
+  },
+  imageViewerDemo: {
+    open: 'Open',
+    imageViewer: 'Image viewer',
+    imageViewerDes: 'Secondary packaging of ImageViewer components based on ElementPlus'
+  },
+  descri
