@@ -35,4 +35,22 @@ import App from './App.vue'
 import './permission'
 
 // 创建实例
-const setupAl
+const setupAll = async () => {
+  const app = createApp(App)
+
+  await setupI18n(app)
+
+  setupStore(app)
+
+  setupGlobCom(app)
+
+  setupElementPlus(app)
+
+  setupRouter(app)
+
+  setupPermission(app)
+
+  app.mount('#app')
+}
+
+setupAll()
