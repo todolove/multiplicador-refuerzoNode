@@ -435,4 +435,8 @@ export default {
     remarkMessage1: 'Back end control routing permission',
     remarkMessage2: 'Front end control routing permission'
   },
-  inputPasswordDemo
+  inputPasswordDemo: {
+    title: 'InputPassword',
+    inputPasswordDes: 'Secondary packaging of Input components based on ElementPlus'
+  }
+}
