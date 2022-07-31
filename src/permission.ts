@@ -62,4 +62,20 @@ router.beforeEach(async (to, from, next) => {
       const redirectPath = from.query.redirect || to.path
       const redirect = decodeURIComponent(redirectPath as string)
       const nextData = to.path === redirect ? { ...to, replace: true } : { path: redirect }
-      permissionStore.
+      permissionStore.setIsAddRouters(true)
+      next(nextData)
+    }
+  } else {
+    if (whiteList.indexOf(to.path) !== -1) {
+      next()
+    } else {
+      next(`/login?redirect=${to.path}`) // 否则全部重定向到登录页
+    }
+  }
+})
+
+router.afterEach((to) => {
+  useTitle(to?.meta?.title as string)
+  done() // 结束Progress
+  loadDone()
+})
