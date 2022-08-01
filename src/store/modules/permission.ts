@@ -54,4 +54,27 @@ export const usePermissionStore = defineStore('permission', {
           {
             path: '/:path(.*)*',
             redirect: '/404',
-           
+            name: '404Page',
+            meta: {
+              hidden: true,
+              breadcrumb: false
+            }
+          }
+        ])
+        // 渲染菜单的所有路由
+        this.routers = cloneDeep(constantRouterMap).concat(routerMap)
+        resolve()
+      })
+    },
+    setIsAddRouters(state: boolean): void {
+      this.isAddRouters = state
+    },
+    setMenuTabRouters(routers: AppRouteRecordRaw[]): void {
+      this.menuTabRouters = routers
+    }
+  }
+})
+
+export const usePermissionStoreWithOut = () => {
+  return usePermissionStore(store)
+}
