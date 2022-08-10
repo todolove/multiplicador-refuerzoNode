@@ -54,4 +54,37 @@ const loading = ref(true)
 let tableDataList = ref<UserType[]>([])
 
 const getTableList = async (params?: Params) => {
-  const res = await getUserList
+  const res = await getUserListApi({
+    params: params || {
+      pageIndex: 1,
+      pageSize: 10
+    }
+  })
+  // .catch(() => {})
+  // .finally(() => {
+  //   loading.value = false
+  // })
+  if (res) {
+    tableDataList.value = res.data.list
+    loading.value = false
+  }
+}
+
+getTableList()
+
+const actionFn = (data: TableSlotDefault) => {
+  console.log(data)
+}
+</script>
+
+<template>
+  <ContentWrap :title="t('userDemo.title')" :message="t('userDemo.message')">
+    <Table :columns="columns" :data="tableDataList" :loading="loading" :selection="false">
+      <template #action="data">
+        <ElButton type="primary" @click="actionFn(data as TableSlotDefault)">
+          {{ t('tableDemo.action') }}
+        </ElButton>
+      </template>
+    </Table>
+  </ContentWrap>
+</template>
