@@ -28,4 +28,9 @@ const { t } = useI18n()
       </ElCol>
       <ElCol :span="24">
         <ElCard shadow="hover" class="mb-20px">
-          <Echart :option
+          <Echart :options="wordOptions as any" :height="300" />
+        </ElCard>
+      </ElCol>
+    </ElRow>
+  </ContentWrap>
+</template>
