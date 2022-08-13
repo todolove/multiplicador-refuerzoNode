@@ -30,4 +30,34 @@ const createFilter = (queryString: string) => {
 const loadAll = () => {
   return [
     { value: 'vue', link: 'https://github.com/vuejs/vue' },
-    { value: 'e
+    { value: 'element', link: 'https://github.com/ElemeFE/element' },
+    { value: 'cooking', link: 'https://github.com/ElemeFE/cooking' },
+    { value: 'mint-ui', link: 'https://github.com/ElemeFE/mint-ui' },
+    { value: 'vuex', link: 'https://github.com/vuejs/vuex' },
+    { value: 'vue-router', link: 'https://github.com/vuejs/vue-router' },
+    { value: 'babel', link: 'https://github.com/babel/babel' }
+  ]
+}
+const handleSelect = (item: Recordable) => {
+  console.log(item)
+}
+onMounted(() => {
+  restaurants.value = loadAll()
+})
+
+const initials = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j']
+const options = ref<ComponentOptions[]>(
+  Array.from({ length: 1000 }).map((_, idx) => ({
+    value: `Option ${idx + 1}`,
+    label: `${initials[idx % 10]}${idx}`
+  }))
+)
+const options2 = ref<ComponentOptions[]>(
+  Array.from({ length: 10 }).map((_, idx) => {
+    const label = idx + 1
+    return {
+      value: `Group ${label}`,
+      label: `Group ${label}`,
+      options: Array.from({ length: 10 }).map((_, idx) => ({
+        value: `Option ${idx + 1 + 10 * label}`,
+        label: `${initials[idx % 10]}${idx 
