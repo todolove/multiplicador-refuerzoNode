@@ -60,4 +60,68 @@ const options2 = ref<ComponentOptions[]>(
       label: `Group ${label}`,
       options: Array.from({ length: 10 }).map((_, idx) => ({
         value: `Option ${idx + 1 + 10 * label}`,
-        label: `${initials[idx % 10]}${idx 
+        label: `${initials[idx % 10]}${idx + 1 + 10 * label}`
+      }))
+    }
+  })
+)
+
+const options3: ComponentOptions[] = [
+  {
+    value: 'guide',
+    label: 'Guide',
+    children: [
+      {
+        value: 'disciplines',
+        label: 'Disciplines',
+        children: [
+          {
+            value: 'consistency',
+            label: 'Consistency'
+          },
+          {
+            value: 'feedback',
+            label: 'Feedback'
+          },
+          {
+            value: 'efficiency',
+            label: 'Efficiency'
+          },
+          {
+            value: 'controllability',
+            label: 'Controllability'
+          }
+        ]
+      },
+      {
+        value: 'navigation',
+        label: 'Navigation',
+        children: [
+          {
+            value: 'side nav',
+            label: 'Side Navigation'
+          },
+          {
+            value: 'top nav',
+            label: 'Top Navigation'
+          }
+        ]
+      }
+    ]
+  },
+  {
+    value: 'component',
+    label: 'Component',
+    children: [
+      {
+        value: 'basic',
+        label: 'Basic',
+        children: [
+          {
+            value: 'layout',
+            label: 'Layout'
+          },
+          {
+            value: 'color',
+            label: 'Color'
+          
