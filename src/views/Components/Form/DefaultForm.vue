@@ -245,4 +245,59 @@ const options3: ComponentOptions[] = [
           },
           {
             value: 'message',
-    
+            label: 'Message'
+          },
+          {
+            value: 'message-box',
+            label: 'MessageBox'
+          },
+          {
+            value: 'notification',
+            label: 'Notification'
+          }
+        ]
+      },
+      {
+        value: 'navigation',
+        label: 'Navigation',
+        children: [
+          {
+            value: 'menu',
+            label: 'Menu'
+          },
+          {
+            value: 'tabs',
+            label: 'Tabs'
+          },
+          {
+            value: 'breadcrumb',
+            label: 'Breadcrumb'
+          },
+          {
+            value: 'dropdown',
+            label: 'Dropdown'
+          },
+          {
+            value: 'steps',
+            label: 'Steps'
+          }
+        ]
+      },
+      {
+        value: 'others',
+        label: 'Others',
+        children: [
+          {
+            value: 'dialog',
+            label: 'Dialog'
+          },
+          {
+            value: 'tooltip',
+            label: 'Tooltip'
+          },
+          {
+            value: 'popover',
+            label: 'Popover'
+          },
+          {
+            value: 
