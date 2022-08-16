@@ -184,4 +184,65 @@ const options3: ComponentOptions[] = [
             label: 'DatePicker'
           },
           {
- 
+            value: 'datetime-picker',
+            label: 'DateTimePicker'
+          },
+          {
+            value: 'upload',
+            label: 'Upload'
+          },
+          {
+            value: 'rate',
+            label: 'Rate'
+          },
+          {
+            value: 'form',
+            label: 'Form'
+          }
+        ]
+      },
+      {
+        value: 'data',
+        label: 'Data',
+        children: [
+          {
+            value: 'table',
+            label: 'Table'
+          },
+          {
+            value: 'tag',
+            label: 'Tag'
+          },
+          {
+            value: 'progress',
+            label: 'Progress'
+          },
+          {
+            value: 'tree',
+            label: 'Tree'
+          },
+          {
+            value: 'pagination',
+            label: 'Pagination'
+          },
+          {
+            value: 'badge',
+            label: 'Badge'
+          }
+        ]
+      },
+      {
+        value: 'notice',
+        label: 'Notice',
+        children: [
+          {
+            value: 'alert',
+            label: 'Alert'
+          },
+          {
+            value: 'loading',
+            label: 'Loading'
+          },
+          {
+            value: 'message',
+    
