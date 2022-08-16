@@ -124,4 +124,64 @@ const options3: ComponentOptions[] = [
           {
             value: 'color',
             label: 'Color'
-          
+          },
+          {
+            value: 'typography',
+            label: 'Typography'
+          },
+          {
+            value: 'icon',
+            label: 'Icon'
+          },
+          {
+            value: 'button',
+            label: 'Button'
+          }
+        ]
+      },
+      {
+        value: 'form',
+        label: 'Form',
+        children: [
+          {
+            value: 'radio',
+            label: 'Radio'
+          },
+          {
+            value: 'checkbox',
+            label: 'Checkbox'
+          },
+          {
+            value: 'input',
+            label: 'Input'
+          },
+          {
+            value: 'input-number',
+            label: 'InputNumber'
+          },
+          {
+            value: 'select',
+            label: 'Select'
+          },
+          {
+            value: 'cascader',
+            label: 'Cascader'
+          },
+          {
+            value: 'switch',
+            label: 'Switch'
+          },
+          {
+            value: 'slider',
+            label: 'Slider'
+          },
+          {
+            value: 'time-picker',
+            label: 'TimePicker'
+          },
+          {
+            value: 'date-picker',
+            label: 'DatePicker'
+          },
+          {
+ 
