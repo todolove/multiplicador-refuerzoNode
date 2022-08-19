@@ -300,4 +300,68 @@ const options3: ComponentOptions[] = [
             label: 'Popover'
           },
           {
-            value: 
+            value: 'card',
+            label: 'Card'
+          },
+          {
+            value: 'carousel',
+            label: 'Carousel'
+          },
+          {
+            value: 'collapse',
+            label: 'Collapse'
+          }
+        ]
+      }
+    ]
+  }
+]
+
+const generateData = () => {
+  const data: {
+    value: number
+    desc: string
+    disabled: boolean
+  }[] = []
+  for (let i = 1; i <= 15; i++) {
+    data.push({
+      value: i,
+      desc: `Option ${i}`,
+      disabled: i % 4 === 0
+    })
+  }
+  return data
+}
+
+const holidays = [
+  '2021-10-01',
+  '2021-10-02',
+  '2021-10-03',
+  '2021-10-04',
+  '2021-10-05',
+  '2021-10-06',
+  '2021-10-07'
+]
+
+const isHoliday = ({ dayjs }) => {
+  return holidays.includes(dayjs.format('YYYY-MM-DD'))
+}
+
+const schema = reactive<FormSchema[]>([
+  {
+    field: 'field1',
+    label: t('formDemo.input'),
+    component: 'Divider'
+  },
+  {
+    field: 'field2',
+    label: t('formDemo.default'),
+    component: 'Input'
+  },
+  {
+    field: 'field3',
+    label: `${t('formDemo.icon')}1`,
+    component: 'Input',
+    componentProps: {
+      suffixIcon: useIcon({ icon: 'ep:calendar' }),
+      prefixIcon: useIcon({ icon: 'ep:calendar
