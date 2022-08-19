@@ -427,4 +427,69 @@ const schema = reactive<FormSchema[]>([
   {
     field: 'field10',
     component: 'Divider',
-    label: t('formDemo.in
+    label: t('formDemo.inputNumber')
+  },
+  {
+    field: 'field11',
+    label: t('formDemo.default'),
+    component: 'InputNumber',
+    value: 0
+  },
+  {
+    field: 'field12',
+    label: t('formDemo.position'),
+    component: 'InputNumber',
+    componentProps: {
+      controlsPosition: 'right'
+    },
+    value: 0
+  },
+  {
+    field: 'field13',
+    label: t('formDemo.select'),
+    component: 'Divider'
+  },
+  {
+    field: 'field14',
+    label: t('formDemo.default'),
+    component: 'Select',
+    componentProps: {
+      options: [
+        {
+          disabled: true,
+          label: 'option1',
+          value: '1'
+        },
+        {
+          label: 'option2',
+          value: '2'
+        }
+      ]
+    }
+  },
+  {
+    field: 'field15',
+    label: t('formDemo.slot'),
+    component: 'Select',
+    componentProps: {
+      options: [
+        {
+          label: 'option1',
+          value: '1'
+        },
+        {
+          label: 'option2',
+          value: '2'
+        }
+      ],
+      optionsSlot: true
+    }
+  },
+  {
+    field: 'field16',
+    label: t('formDemo.selectGroup'),
+    component: 'Select',
+    componentProps: {
+      options: [
+        {
+          label: 'option1',
