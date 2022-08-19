@@ -364,4 +364,67 @@ const schema = reactive<FormSchema[]>([
     component: 'Input',
     componentProps: {
       suffixIcon: useIcon({ icon: 'ep:calendar' }),
-      prefixIcon: useIcon({ icon: 'ep:calendar
+      prefixIcon: useIcon({ icon: 'ep:calendar' })
+    }
+  },
+  {
+    field: 'field4',
+    label: `${t('formDemo.icon')}2`,
+    component: 'Input',
+    componentProps: {
+      slots: {
+        suffix: true,
+        prefix: true
+      }
+    }
+  },
+  {
+    field: 'field5',
+    label: t('formDemo.mixed'),
+    component: 'Input',
+    componentProps: {
+      slots: {
+        prepend: true,
+        append: true
+      }
+    }
+  },
+  {
+    field: 'field6',
+    label: t('formDemo.textarea'),
+    component: 'Input',
+    componentProps: {
+      type: 'textarea',
+      rows: 1
+    }
+  },
+  {
+    field: 'field7',
+    label: t('formDemo.autocomplete'),
+    component: 'Divider'
+  },
+  {
+    field: 'field8',
+    label: t('formDemo.default'),
+    component: 'Autocomplete',
+    componentProps: {
+      fetchSuggestions: querySearch,
+      onSelect: handleSelect
+    }
+  },
+  {
+    field: 'field9',
+    label: t('formDemo.slot'),
+    component: 'Autocomplete',
+    componentProps: {
+      fetchSuggestions: querySearch,
+      onSelect: handleSelect,
+      slots: {
+        default: true
+      }
+    }
+  },
+  {
+    field: 'field10',
+    component: 'Divider',
+    label: t('formDemo.in
