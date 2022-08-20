@@ -611,4 +611,60 @@ const schema = reactive<FormSchema[]>([
     label: t('formDemo.default'),
     component: 'Cascader',
     componentProps: {
-      o
+      options: options3
+    }
+  },
+  {
+    field: 'field25',
+    label: t('formDemo.slot'),
+    component: 'Cascader',
+    componentProps: {
+      options: options3,
+      slots: {
+        default: true
+      }
+    }
+  },
+  {
+    field: 'field26',
+    label: t('formDemo.switch'),
+    component: 'Divider'
+  },
+  {
+    field: 'field27',
+    label: t('formDemo.default'),
+    component: 'Switch',
+    value: false
+  },
+  {
+    field: 'field28',
+    label: t('formDemo.icon'),
+    component: 'Switch',
+    value: false,
+    componentProps: {
+      activeIcon: useIcon({ icon: 'ep:check' }),
+      inactiveIcon: useIcon({ icon: 'ep:close' })
+    }
+  },
+  {
+    field: 'field29',
+    label: t('formDemo.rate'),
+    component: 'Divider'
+  },
+  {
+    field: 'field30',
+    label: t('formDemo.default'),
+    component: 'Rate',
+    value: null
+  },
+  {
+    field: 'field31',
+    label: t('formDemo.icon'),
+    component: 'Rate',
+    value: null,
+    componentProps: {
+      voidIcon: useIcon({ icon: 'ep:chat-round' }),
+      icons: [
+        useIcon({ icon: 'ep:chat-round' }),
+        useIcon({ icon: 'ep:chat-line-round' }),
+        useIcon({ icon: 'ep:c
