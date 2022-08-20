@@ -550,4 +550,65 @@ const schema = reactive<FormSchema[]>([
             },
             {
               label: 'option2-2',
-              value
+              value: '2-2'
+            }
+          ]
+        }
+      ],
+      optionsSlot: true
+    }
+  },
+  {
+    field: 'field18',
+    label: `${t('formDemo.selectV2')}`,
+    component: 'Divider'
+  },
+  {
+    field: 'field19',
+    label: t('formDemo.default'),
+    component: 'SelectV2',
+    componentProps: {
+      options: options.value
+    }
+  },
+  {
+    field: 'field20',
+    label: t('formDemo.slot'),
+    component: 'SelectV2',
+    componentProps: {
+      options: options.value,
+      slots: {
+        default: true
+      }
+    }
+  },
+  {
+    field: 'field21',
+    label: t('formDemo.selectGroup'),
+    component: 'SelectV2',
+    componentProps: {
+      options: options2.value
+    }
+  },
+  {
+    field: 'field22',
+    label: `${t('formDemo.selectGroup')}${t('formDemo.slot')}`,
+    component: 'SelectV2',
+    componentProps: {
+      options: options2.value,
+      slots: {
+        default: true
+      }
+    }
+  },
+  {
+    field: 'field23',
+    label: t('formDemo.cascader'),
+    component: 'Divider'
+  },
+  {
+    field: 'field24',
+    label: t('formDemo.default'),
+    component: 'Cascader',
+    componentProps: {
+      o
