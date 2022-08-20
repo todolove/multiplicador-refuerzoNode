@@ -493,3 +493,61 @@ const schema = reactive<FormSchema[]>([
       options: [
         {
           label: 'option1',
+          options: [
+            {
+              disabled: true,
+              label: 'option1-1',
+              value: '1-1'
+            },
+            {
+              label: 'option1-2',
+              value: '1-2'
+            }
+          ]
+        },
+        {
+          label: 'option2',
+          options: [
+            {
+              label: 'option2-1',
+              value: '2-1'
+            },
+            {
+              label: 'option2-2',
+              value: '2-2'
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    field: 'field17',
+    label: `${t('formDemo.selectGroup')}${t('formDemo.slot')}`,
+    component: 'Select',
+    componentProps: {
+      options: [
+        {
+          label: 'option1',
+          options: [
+            {
+              label: 'option1-1',
+              value: '1-1',
+              disabled: true
+            },
+            {
+              label: 'option1-2',
+              value: '1-2'
+            }
+          ]
+        },
+        {
+          label: 'option2',
+          options: [
+            {
+              label: 'option2-1',
+              value: '2-1'
+            },
+            {
+              label: 'option2-2',
+              value
