@@ -729,4 +729,65 @@ const schema = reactive<FormSchema[]>([
     field: 'field37',
     label: `${t('formDemo.render')}`,
     component: 'Transfer',
-    compo
+    componentProps: {
+      props: {
+        key: 'value',
+        label: 'desc',
+        disabled: 'disabled'
+      },
+      leftDefaultChecked: [2, 3],
+      rightDefaultChecked: [1],
+      data: generateData(),
+      renderContent: (h: Fn, option: Recordable) => {
+        return h('span', null, `${option.value} - ${option.desc}`)
+      }
+    },
+    value: [1],
+    colProps: {
+      span: 24
+    }
+  },
+  {
+    field: 'field38',
+    label: t('formDemo.radio'),
+    component: 'Divider'
+  },
+  {
+    field: 'field39',
+    label: t('formDemo.default'),
+    component: 'Radio',
+    componentProps: {
+      options: [
+        {
+          disabled: true,
+          label: 'option-1',
+          value: '1'
+        },
+        {
+          label: 'option-2',
+          value: '2'
+        }
+      ]
+    }
+  },
+  {
+    field: 'field40',
+    label: t('formDemo.button'),
+    component: 'RadioButton',
+    componentProps: {
+      options: [
+        {
+          disabled: true,
+          label: 'option-1',
+          value: '1'
+        },
+        {
+          label: 'option-2',
+          value: '2'
+        }
+      ]
+    }
+  },
+  {
+    field: 'field41',
+    label: t('formDemo.checkbo
