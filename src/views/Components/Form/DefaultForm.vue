@@ -667,4 +667,66 @@ const schema = reactive<FormSchema[]>([
       icons: [
         useIcon({ icon: 'ep:chat-round' }),
         useIcon({ icon: 'ep:chat-line-round' }),
-        useIcon({ icon: 'ep:c
+        useIcon({ icon: 'ep:chat-dot-round' })
+      ]
+    }
+  },
+  {
+    field: 'field32',
+    label: t('formDemo.colorPicker'),
+    component: 'Divider'
+  },
+  {
+    field: 'field33',
+    label: t('formDemo.default'),
+    component: 'ColorPicker'
+  },
+  {
+    field: 'field34',
+    label: t('formDemo.transfer'),
+    component: 'Divider'
+  },
+  {
+    field: 'field35',
+    label: t('formDemo.default'),
+    component: 'Transfer',
+    componentProps: {
+      props: {
+        key: 'value',
+        label: 'desc',
+        disabled: 'disabled'
+      },
+      data: generateData()
+    },
+    value: [],
+    colProps: {
+      span: 24
+    }
+  },
+  {
+    field: 'field36',
+    label: t('formDemo.slot'),
+    component: 'Transfer',
+    componentProps: {
+      props: {
+        key: 'value',
+        label: 'desc',
+        disabled: 'disabled'
+      },
+      leftDefaultChecked: [2, 3],
+      rightDefaultChecked: [1],
+      data: generateData(),
+      slots: {
+        default: true
+      }
+    },
+    value: [1],
+    colProps: {
+      span: 24
+    }
+  },
+  {
+    field: 'field37',
+    label: `${t('formDemo.render')}`,
+    component: 'Transfer',
+    compo
