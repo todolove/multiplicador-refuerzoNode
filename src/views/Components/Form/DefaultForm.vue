@@ -790,4 +790,68 @@ const schema = reactive<FormSchema[]>([
   },
   {
     field: 'field41',
-    label: t('formDemo.checkbo
+    label: t('formDemo.checkbox'),
+    component: 'Divider'
+  },
+  {
+    field: 'field42',
+    label: t('formDemo.default'),
+    component: 'Checkbox',
+    value: [],
+    componentProps: {
+      options: [
+        {
+          disabled: true,
+          label: 'option-1',
+          value: '1'
+        },
+        {
+          label: 'option-2',
+          value: '2'
+        },
+        {
+          label: 'option-3',
+          value: '23'
+        }
+      ]
+    }
+  },
+  {
+    field: 'field43',
+    label: t('formDemo.button'),
+    component: 'CheckboxButton',
+    value: [],
+    componentProps: {
+      options: [
+        {
+          disabled: true,
+          label: 'option-1',
+          value: '1'
+        },
+        {
+          label: 'option-2',
+          value: '2'
+        },
+        {
+          label: 'option-3',
+          value: '23'
+        }
+      ]
+    }
+  },
+  {
+    field: 'field44',
+    component: 'Divider',
+    label: t('formDemo.slider')
+  },
+  {
+    field: 'field45',
+    component: 'Slider',
+    label: t('formDemo.default'),
+    value: 0
+  },
+  {
+    field: 'field46',
+    component: 'Divider',
+    label: t('formDemo.datePicker')
+  },
