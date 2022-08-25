@@ -906,4 +906,66 @@ const schema = reactive<FormSchema[]>([
     }
   },
   {
-    field
+    field: 'field50',
+    component: 'DatePicker',
+    label: t('formDemo.year'),
+    componentProps: {
+      type: 'year'
+    }
+  },
+  {
+    field: 'field51',
+    component: 'DatePicker',
+    label: t('formDemo.month'),
+    componentProps: {
+      type: 'month'
+    }
+  },
+  {
+    field: 'field52',
+    component: 'DatePicker',
+    label: t('formDemo.dates'),
+    componentProps: {
+      type: 'dates'
+    }
+  },
+  {
+    field: 'field53',
+    component: 'DatePicker',
+    label: t('formDemo.daterange'),
+    componentProps: {
+      type: 'daterange'
+    }
+  },
+  {
+    field: 'field54',
+    component: 'DatePicker',
+    label: t('formDemo.monthrange'),
+    componentProps: {
+      type: 'monthrange'
+    }
+  },
+  {
+    field: 'field55',
+    component: 'DatePicker',
+    label: t('formDemo.slot'),
+    componentProps: {
+      type: 'date',
+      format: 'YYYY/MM/DD',
+      valueFormat: 'YYYY-MM-DD',
+      slots: {
+        default: true
+      }
+    }
+  },
+  {
+    field: 'field56',
+    component: 'Divider',
+    label: t('formDemo.dateTimePicker')
+  },
+  {
+    field: 'field57',
+    component: 'DatePicker',
+    label: t('formDemo.default'),
+    componentProps: {
+  
