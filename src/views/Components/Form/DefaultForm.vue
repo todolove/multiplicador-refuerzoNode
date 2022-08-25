@@ -855,3 +855,55 @@ const schema = reactive<FormSchema[]>([
     component: 'Divider',
     label: t('formDemo.datePicker')
   },
+  {
+    field: 'field47',
+    component: 'DatePicker',
+    label: t('formDemo.default'),
+    componentProps: {
+      type: 'date'
+    }
+  },
+  {
+    field: 'field48',
+    component: 'DatePicker',
+    label: t('formDemo.shortcuts'),
+    componentProps: {
+      type: 'date',
+      disabledDate: (time: Date) => {
+        return time.getTime() > Date.now()
+      },
+      shortcuts: [
+        {
+          text: t('formDemo.today'),
+          value: new Date()
+        },
+        {
+          text: t('formDemo.yesterday'),
+          value: () => {
+            const date = new Date()
+            date.setTime(date.getTime() - 3600 * 1000 * 24)
+            return date
+          }
+        },
+        {
+          text: t('formDemo.aWeekAgo'),
+          value: () => {
+            const date = new Date()
+            date.setTime(date.getTime() - 3600 * 1000 * 24 * 7)
+            return date
+          }
+        }
+      ]
+    }
+  },
+  {
+    field: 'field49',
+    component: 'DatePicker',
+    label: t('formDemo.week'),
+    componentProps: {
+      type: 'week',
+      format: `[${t('formDemo.week')}] ww`
+    }
+  },
+  {
+    field
