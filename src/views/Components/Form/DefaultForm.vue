@@ -1022,4 +1022,40 @@ const schema = reactive<FormSchema[]>([
   {
     field: 'field62',
     component: 'Divider',
-    label: t(
+    label: t('formDemo.timeSelect')
+  },
+  {
+    field: 'field63',
+    component: 'TimeSelect',
+    label: t('formDemo.default')
+  }
+])
+</script>
+
+<template>
+  <ContentWrap :title="t('formDemo.defaultForm')" :message="t('formDemo.formDes')">
+    <Form :schema="schema" label-width="auto" :label-position="isMobile ? 'top' : 'right'">
+      <template #field4-prefix>
+        <Icon icon="ep:calendar" class="el-input__icon" />
+      </template>
+      <template #field4-suffix>
+        <Icon icon="ep:calendar" class="el-input__icon" />
+      </template>
+
+      <template #field5-prepend> Http:// </template>
+      <template #field5-append> .com </template>
+
+      <template #field9-default="{ item }">
+        <div class="value">{{ item.value }}</div>
+        <span class="link">{{ item.link }}</span>
+      </template>
+
+      <template #field15-option="{ item }">
+        <span style="float: left">{{ item.label }}</span>
+        <span style="float: right; font-size: 13px; color: var(--el-text-color-secondary)">
+          {{ item.value }}
+        </span>
+      </template>
+
+      <template #field17-option="{ item }">
+        <span style="
