@@ -1090,4 +1090,47 @@ const schema = reactive<FormSchema[]>([
       <template #field55-default="cell">
         <div class="cell" :class="{ current: cell.isCurrent }">
           <span class="text">{{ cell.text }}</span>
-          <
+          <span v-if="isHoliday(cell)" class="holiday"></span>
+        </div>
+      </template>
+    </Form>
+  </ContentWrap>
+</template>
+
+<style lang="less" scoped>
+.cell {
+  height: 30px;
+  padding: 3px 0;
+  box-sizing: border-box;
+
+  .text {
+    position: absolute;
+    left: 50%;
+    display: block;
+    width: 24px;
+    height: 24px;
+    margin: 0 auto;
+    line-height: 24px;
+    border-radius: 50%;
+    transform: translateX(-50%);
+  }
+
+  &.current {
+    .text {
+      color: #fff;
+      background: purple;
+    }
+  }
+
+  .holiday {
+    position: absolute;
+    bottom: 0px;
+    left: 50%;
+    width: 6px;
+    height: 6px;
+    background: red;
+    border-radius: 50%;
+    transform: translateX(-50%);
+  }
+}
+</style>
