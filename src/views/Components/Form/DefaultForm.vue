@@ -1058,4 +1058,36 @@ const schema = reactive<FormSchema[]>([
       </template>
 
       <template #field17-option="{ item }">
-        <span style="
+        <span style="float: left">{{ item.label }}</span>
+        <span style="float: right; font-size: 13px; color: var(--el-text-color-secondary)">
+          {{ item.value }}
+        </span>
+      </template>
+
+      <template #field20-default="{ item }">
+        <span style="float: left">{{ item.label }}</span>
+        <span style="float: right; font-size: 13px; color: var(--el-text-color-secondary)">
+          {{ item.value }}
+        </span>
+      </template>
+
+      <template #field22-default="{ item }">
+        <span style="float: left">{{ item.label }}</span>
+        <span style="float: right; font-size: 13px; color: var(--el-text-color-secondary)">
+          {{ item.value }}
+        </span>
+      </template>
+
+      <template #field25-default="{ node, data }">
+        <span>{{ data.label }}</span>
+        <span v-if="!node.isLeaf"> ({{ data.children.length }}) </span>
+      </template>
+
+      <template #field36-default="{ option }">
+        <span>{{ option.value }} - {{ option.desc }}</span>
+      </template>
+
+      <template #field55-default="cell">
+        <div class="cell" :class="{ current: cell.isCurrent }">
+          <span class="text">{{ cell.text }}</span>
+          <
