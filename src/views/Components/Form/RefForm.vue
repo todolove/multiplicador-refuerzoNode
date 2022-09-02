@@ -79,4 +79,67 @@ const schema = reactive<FormSchema[]>([
   },
   {
     field: 'field5',
-    component: 'Da
+    component: 'DatePicker',
+    label: t('formDemo.datePicker'),
+    componentProps: {
+      type: 'date'
+    }
+  },
+  {
+    field: 'field6',
+    component: 'TimeSelect',
+    label: t('formDemo.timeSelect')
+  }
+])
+
+const formRef = ref<FormExpose>()
+
+const changeLabelWidth = (width: number | string) => {
+  unref(formRef)?.setProps({
+    labelWidth: width
+  })
+}
+
+const changeSize = (size: string) => {
+  unref(formRef)?.setProps({
+    size
+  })
+}
+
+const changeDisabled = (bool: boolean) => {
+  unref(formRef)?.setProps({
+    disabled: bool
+  })
+}
+
+const changeSchema = (del: boolean) => {
+  if (del) {
+    unref(formRef)?.delSchema('field2')
+  } else if (!del && schema[1].field !== 'field2') {
+    unref(formRef)?.addSchema(
+      {
+        field: 'field2',
+        label: t('formDemo.select'),
+        component: 'Select',
+        componentProps: {
+          options: [
+            {
+              label: 'option1',
+              value: '1'
+            },
+            {
+              label: 'option2',
+              value: '2'
+            }
+          ]
+        }
+      },
+      1
+    )
+  }
+}
+
+const setValue = (reset: boolean) => {
+  const elFormRef = unref(formRef)?.getElFormRef()
+  if (reset) {
+   
