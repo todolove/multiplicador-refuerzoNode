@@ -142,4 +142,65 @@ const changeSchema = (del: boolean) => {
 const setValue = (reset: boolean) => {
   const elFormRef = unref(formRef)?.getElFormRef()
   if (reset) {
-   
+    elFormRef?.resetFields()
+  } else {
+    unref(formRef)?.setValues({
+      field1: 'field1',
+      field2: '2',
+      field3: '2',
+      field4: ['1', '3'],
+      field5: '2022-01-27',
+      field6: '17:00'
+    })
+  }
+}
+
+const index = ref(7)
+
+const setLabel = () => {
+  unref(formRef)?.setSchema([
+    {
+      field: 'field2',
+      path: 'label',
+      value: `${t('formDemo.select')} ${index.value}`
+    },
+    {
+      field: 'field2',
+      path: 'componentProps.options',
+      value: [
+        {
+          label: 'option-1',
+          value: '1'
+        },
+        {
+          label: 'option-2',
+          value: '2'
+        },
+        {
+          label: 'option-3',
+          value: '3'
+        }
+      ]
+    }
+  ])
+  index.value++
+}
+
+const addItem = () => {
+  if (unref(index) % 2 === 0) {
+    unref(formRef)?.addSchema({
+      field: `field${unref(index)}`,
+      label: `${t('formDemo.input')}${unref(index)}`,
+      component: 'Input'
+    })
+  } else {
+    unref(formRef)?.addSchema(
+      {
+        field: `field${unref(index)}`,
+        label: `${t('formDemo.input')}${unref(index)}`,
+        component: 'Input'
+      },
+      unref(index)
+    )
+  }
+  ind
