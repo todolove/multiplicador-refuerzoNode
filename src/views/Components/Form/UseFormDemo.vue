@@ -215,3 +215,67 @@ const addItem = () => {
   }
   index.value++
 }
+
+const formValidation = () => {
+  unref(elFormRef)!.validate((isValid) => {
+    console.log(isValid)
+  })
+}
+
+const verifyReset = () => {
+  unref(elFormRef)?.resetFields()
+}
+
+const getDictOne = async () => {
+  const res = await getDictOneApi()
+  if (res) {
+    const { setSchema } = methods
+    setSchema([
+      {
+        field: 'field2',
+        path: 'componentProps.options',
+        value: res.data
+      }
+    ])
+  }
+}
+</script>
+
+<template>
+  <ContentWrap :title="`UseForm ${t('formDemo.operate')}`">
+    <ElButton @click="changeLabelWidth(150)">{{ t('formDemo.change') }} labelWidth</ElButton>
+    <ElButton @click="changeLabelWidth('auto')">{{ t('formDemo.restore') }} labelWidth</ElButton>
+
+    <ElButton @click="changeSize('large')">{{ t('formDemo.change') }} size</ElButton>
+    <ElButton @click="changeSize('default')">{{ t('formDemo.restore') }} size</ElButton>
+
+    <ElButton @click="changeDisabled(true)">{{ t('formDemo.disabled') }}</ElButton>
+    <ElButton @click="changeDisabled(false)">{{ t('formDemo.disablement') }}</ElButton>
+
+    <ElButton @click="changeSchema(true)">
+      {{ t('formDemo.delete') }} {{ t('formDemo.select') }}
+    </ElButton>
+    <ElButton @click="changeSchema(false)">
+      {{ t('formDemo.add') }} {{ t('formDemo.select') }}
+    </ElButton>
+
+    <ElButton @click="setValue(false)">{{ t('formDemo.setValue') }}</ElButton>
+    <ElButton @click="setValue(true)">{{ t('formDemo.resetValue') }}</ElButton>
+
+    <ElButton @click="setLabel">
+      {{ t('formDemo.set') }} {{ t('formDemo.select') }} label
+    </ElButton>
+
+    <ElButton @click="addItem"> {{ t('formDemo.add') }} {{ t('formDemo.subitem') }} </ElButton>
+
+    <ElButton @click="formValidation"> {{ t('formDemo.formValidation') }} </ElButton>
+    <ElButton @click="verifyReset"> {{ t('formDemo.verifyReset') }} </ElButton>
+
+    <ElButton @click="getDictOne">
+      {{ t('searchDemo.dynamicOptions') }}
+    </ElButton>
+  </ContentWrap>
+  <ContentWrap :title="`UseForm ${t('formDemo.example')}`">
+    <Form @register="register" />
+  </ContentWrap>
+</template>
