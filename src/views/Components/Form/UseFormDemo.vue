@@ -1,7 +1,9 @@
+
 <script setup lang="ts">
-import { Form, FormExpose } from '@/components/Form'
+import { Form } from '@/components/Form'
 import { ContentWrap } from '@/components/ContentWrap'
 import { useI18n } from '@/hooks/web/useI18n'
+import { useForm } from '@/hooks/web/useForm'
 import { reactive, unref, ref } from 'vue'
 import { ElButton } from 'element-plus'
 import { useValidator } from '@/hooks/web/useValidator'
@@ -92,31 +94,37 @@ const schema = reactive<FormSchema[]>([
   }
 ])
 
-const formRef = ref<FormExpose>()
+const { register, methods, elFormRef } = useForm({
+  schema
+})
 
 const changeLabelWidth = (width: number | string) => {
-  unref(formRef)?.setProps({
+  const { setProps } = methods
+  setProps({
     labelWidth: width
   })
 }
 
 const changeSize = (size: string) => {
-  unref(formRef)?.setProps({
+  const { setProps } = methods
+  setProps({
     size
   })
 }
 
 const changeDisabled = (bool: boolean) => {
-  unref(formRef)?.setProps({
+  const { setProps } = methods
+  setProps({
     disabled: bool
   })
 }
 
 const changeSchema = (del: boolean) => {
+  const { delSchema, addSchema } = methods
   if (del) {
-    unref(formRef)?.delSchema('field2')
+    delSchema('field2')
   } else if (!del && schema[1].field !== 'field2') {
-    unref(formRef)?.addSchema(
+    addSchema(
       {
         field: 'field2',
         label: t('formDemo.select'),
@@ -140,11 +148,11 @@ const changeSchema = (del: boolean) => {
 }
 
 const setValue = (reset: boolean) => {
-  const elFormRef = unref(formRef)?.getElFormRef()
+  const { setValues } = methods
   if (reset) {
-    elFormRef?.resetFields()
+    unref(elFormRef)?.resetFields()
   } else {
-    unref(formRef)?.setValues({
+    setValues({
       field1: 'field1',
       field2: '2',
       field3: '2',
@@ -158,7 +166,8 @@ const setValue = (reset: boolean) => {
 const index = ref(7)
 
 const setLabel = () => {
-  unref(formRef)?.setSchema([
+  const { setSchema } = methods
+  setSchema([
     {
       field: 'field2',
       path: 'label',
@@ -187,14 +196,15 @@ const setLabel = () => {
 }
 
 const addItem = () => {
+  const { addSchema } = methods
   if (unref(index) % 2 === 0) {
-    unref(formRef)?.addSchema({
+    addSchema({
       field: `field${unref(index)}`,
       label: `${t('formDemo.input')}${unref(index)}`,
       component: 'Input'
     })
   } else {
-    unref(formRef)?.addSchema(
+    addSchema(
       {
         field: `field${unref(index)}`,
         label: `${t('formDemo.input')}${unref(index)}`,
@@ -205,66 +215,3 @@ const addItem = () => {
   }
   index.value++
 }
-
-const formValidation = () => {
-  const elFormRef = unref(formRef)?.getElFormRef()
-  elFormRef?.validate()?.catch(() => {})
-}
-
-const verifyReset = () => {
-  const elFormRef = unref(formRef)?.getElFormRef()
-  elFormRef?.resetFields()
-}
-
-const getDictOne = async () => {
-  const res = await getDictOneApi()
-  if (res) {
-    unref(formRef)?.setSchema([
-      {
-        field: 'field2',
-        path: 'componentProps.options',
-        value: res.data
-      }
-    ])
-  }
-}
-</script>
-
-<template>
-  <ContentWrap :title="`RefForm ${t('formDemo.operate')}`">
-    <ElButton @click="changeLabelWidth(150)">{{ t('formDemo.change') }} labelWidth</ElButton>
-    <ElButton @click="changeLabelWidth('auto')">{{ t('formDemo.restore') }} labelWidth</ElButton>
-
-    <ElButton @click="changeSize('large')">{{ t('formDemo.change') }} size</ElButton>
-    <ElButton @click="changeSize('default')">{{ t('formDemo.restore') }} size</ElButton>
-
-    <ElButton @click="changeDisabled(true)">{{ t('formDemo.disabled') }}</ElButton>
-    <ElButton @click="changeDisabled(false)">{{ t('formDemo.disablement') }}</ElButton>
-
-    <ElButton @click="changeSchema(true)">
-      {{ t('formDemo.delete') }} {{ t('formDemo.select') }}
-    </ElButton>
-    <ElButton @click="changeSchema(false)">
-      {{ t('formDemo.add') }} {{ t('formDemo.select') }}
-    </ElButton>
-
-    <ElButton @click="setValue(false)">{{ t('formDemo.setValue') }}</ElButton>
-    <ElButton @click="setValue(true)">{{ t('formDemo.resetValue') }}</ElButton>
-
-    <ElButton @click="setLabel">
-      {{ t('formDemo.set') }} {{ t('formDemo.select') }} label
-    </ElButton>
-
-    <ElButton @click="addItem"> {{ t('formDemo.add') }} {{ t('formDemo.subitem') }} </ElButton>
-
-    <ElButton @click="formValidation"> {{ t('formDemo.formValidation') }} </ElButton>
-    <ElButton @click="verifyReset"> {{ t('formDemo.verifyReset') }} </ElButton>
-
-    <ElButton @click="getDictOne">
-      {{ t('searchDemo.dynamicOptions') }}
-    </ElButton>
-  </ContentWrap>
-  <ContentWrap :title="`RefForm ${t('formDemo.example')}`">
-    <Form :schema="schema" ref="formRef" />
-  </ContentWrap>
-</template>
