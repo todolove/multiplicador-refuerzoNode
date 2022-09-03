@@ -203,4 +203,43 @@ const addItem = () => {
       unref(index)
     )
   }
-  ind
+  index.value++
+}
+
+const formValidation = () => {
+  const elFormRef = unref(formRef)?.getElFormRef()
+  elFormRef?.validate()?.catch(() => {})
+}
+
+const verifyReset = () => {
+  const elFormRef = unref(formRef)?.getElFormRef()
+  elFormRef?.resetFields()
+}
+
+const getDictOne = async () => {
+  const res = await getDictOneApi()
+  if (res) {
+    unref(formRef)?.setSchema([
+      {
+        field: 'field2',
+        path: 'componentProps.options',
+        value: res.data
+      }
+    ])
+  }
+}
+</script>
+
+<template>
+  <ContentWrap :title="`RefForm ${t('formDemo.operate')}`">
+    <ElButton @click="changeLabelWidth(150)">{{ t('formDemo.change') }} labelWidth</ElButton>
+    <ElButton @click="changeLabelWidth('auto')">{{ t('formDemo.restore') }} labelWidth</ElButton>
+
+    <ElButton @click="changeSize('large')">{{ t('formDemo.change') }} size</ElButton>
+    <ElButton @click="changeSize('default')">{{ t('formDemo.restore') }} size</ElButton>
+
+    <ElButton @click="changeDisabled(true)">{{ t('formDemo.disabled') }}</ElButton>
+    <ElButton @click="changeDisabled(false)">{{ t('formDemo.disablement') }}</ElButton>
+
+    <ElButton @click="changeSchema(true)">
+      {{ t('formDemo.delete') }} {{ t('formDemo
