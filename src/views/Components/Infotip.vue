@@ -16,4 +16,18 @@ const keyClick = (key: string) => {
   <ContentWrap :title="t('infotipDemo.infotip')" :message="t('infotipDemo.infotipDes')">
     <Infotip
       :show-index="false"
-      :title="`${t('iconDemo.recommendedUse'
+      :title="`${t('iconDemo.recommendedUse')}${t('iconDemo.iconify')}`"
+      :schema="[
+        {
+          label: t('iconDemo.recommendeDes'),
+          keys: ['Iconify']
+        },
+        {
+          label: t('iconDemo.accessAddress'),
+          keys: [t('iconDemo.accessAddress')]
+        }
+      ]"
+      @click="keyClick"
+    />
+  </ContentWrap>
+</template>
