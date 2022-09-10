@@ -13,4 +13,33 @@ const { t } = useI18n()
       <div style="padding: 10px; background-color: lightblue"> Sticky 距离顶部90px </div>
     </Sticky>
 
-    <p style="margi
+    <p style="margin: 80px">Content</p>
+    <p style="margin: 80px">Content</p>
+
+    <el-affix :offset="150">
+      <div style="padding: 10px; background-color: lightblue">Affix 距离顶部150px </div>
+    </el-affix>
+    <p style="margin: 80px">Content</p>
+    <p style="margin: 80px">Content</p>
+    <p style="margin: 80px">Content</p>
+    <p style="margin: 80px">Content</p>
+    <p style="margin: 80px">Content</p>
+    <p style="margin: 80px">Content</p>
+    <p style="margin: 80px">Content</p>
+    <p style="margin: 80px">Content</p>
+    <p style="margin: 80px">Content</p>
+    <p style="margin: 80px">Content</p>
+    <p style="margin: 80px">Content</p>
+    <p style="margin: 80px">Content</p>
+    <p style="margin: 80px">Content</p>
+    <p style="margin: 80px">Content</p>
+    <p style="margin: 80px">Content</p>
+    <p style="margin: 80px">Content</p>
+    <p style="margin: 80px">Content</p>
+    <p style="margin: 80px">Content</p>
+    <p style="margin: 80px">Content</p>
+    <p style="margin: 80px">Content</p>
+    <p style="margin: 80px">Content</p>
+    <p style="margin: 80px">Content</p>
+    <p style="margin: 80px">Content</p>
+    <p style="margin: 80px
