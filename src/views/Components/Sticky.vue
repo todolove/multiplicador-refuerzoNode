@@ -42,4 +42,21 @@ const { t } = useI18n()
     <p style="margin: 80px">Content</p>
     <p style="margin: 80px">Content</p>
     <p style="margin: 80px">Content</p>
-    <p style="margin: 80px
+    <p style="margin: 80px">Content</p>
+    <p style="margin: 80px">Content</p>
+    <p style="margin: 80px">Content</p>
+
+    <el-affix :offset="150" position="bottom">
+      <div style="padding: 10px; background-color: lightblue">Affix 距离底部150px </div>
+    </el-affix>
+
+    <p style="margin: 80px">Content</p>
+    <p style="margin: 80px">Content</p>
+
+    <Sticky :offset="90" position="bottom">
+      <div style="padding: 10px; background-color: lightblue"> Sticky 距离底部90px </div>
+    </Sticky>
+    <p style="margin: 80px">Content</p>
+    <p style="margin: 80px">Content</p>
+  </ContentWrap>
+</template>
