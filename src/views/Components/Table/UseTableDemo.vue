@@ -117,4 +117,49 @@ const reserveIndex = (custom: boolean) => {
 const showSelections = (show: boolean) => {
   const { setProps } = methods
   setProps({
-    selection:
+    selection: show
+  })
+}
+
+const index = ref(1)
+
+const changeTitle = () => {
+  const { setColumn } = methods
+  setColumn([
+    {
+      field: 'title',
+      path: 'label',
+      value: `${t('tableDemo.title')}${unref(index)}`
+    }
+  ])
+  index.value++
+}
+
+const showExpandedRows = (show: boolean) => {
+  const { setProps } = methods
+  setProps({
+    expand: show
+  })
+}
+
+const selectAllNone = () => {
+  unref(elTableRef)?.toggleAllSelection()
+}
+</script>
+
+<template>
+  <ContentWrap :title="`UseTable ${t('tableDemo.operate')}`">
+    <ElButton @click="showPagination(true)">
+      {{ t('tableDemo.show') }} {{ t('tableDemo.pagination') }}
+    </ElButton>
+    <ElButton @click="showPagination(false)">
+      {{ t('tableDemo.hidden') }} {{ t('tableDemo.pagination') }}
+    </ElButton>
+
+    <ElButton @click="reserveIndex(true)">{{ t('tableDemo.reserveIndex') }}</ElButton>
+    <ElButton @click="reserveIndex(false)">{{ t('tableDemo.restoreIndex') }}</ElButton>
+
+    <ElButton @click="showSelections(true)">{{ t('tableDemo.showSelections') }}</ElButton>
+    <ElButton @click="showSelections(false)">{{ t('tableDemo.hiddenSelections') }}</ElButton>
+
+    <ElBut
