@@ -162,4 +162,31 @@ const selectAllNone = () => {
     <ElButton @click="showSelections(true)">{{ t('tableDemo.showSelections') }}</ElButton>
     <ElButton @click="showSelections(false)">{{ t('tableDemo.hiddenSelections') }}</ElButton>
 
-    <ElBut
+    <ElButton @click="changeTitle">{{ t('tableDemo.changeTitle') }}</ElButton>
+
+    <ElButton @click="showExpandedRows(true)">{{ t('tableDemo.showExpandedRows') }}</ElButton>
+    <ElButton @click="showExpandedRows(false)">{{ t('tableDemo.hiddenExpandedRows') }}</ElButton>
+
+    <ElButton @click="selectAllNone">{{ t('tableDemo.selectAllNone') }}</ElButton>
+  </ContentWrap>
+  <ContentWrap :title="`UseTable ${t('tableDemo.example')}`">
+    <Table
+      v-model:pageSize="tableObject.pageSize"
+      v-model:currentPage="tableObject.currentPage"
+      :columns="columns"
+      :data="tableObject.tableList"
+      :loading="tableObject.loading"
+      :pagination="paginationObj"
+      @register="register"
+    >
+      <template #action="data">
+        <ElButton type="primary" @click="actionFn(data as TableSlotDefault)">
+          {{ t('tableDemo.action') }}
+        </ElButton>
+      </template>
+
+      <template #expand="data">
+        <div class="ml-30px">
+          <div>{{ t('tableDemo.title') }}：{{ data.row.title }}</div>
+          <div>{{ t('tableDemo.author') }}：{{ data.row.author }}</div>
+          <div>{{ t('tableDemo.displayTime') }}：{{ data.row.display_ti
