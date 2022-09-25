@@ -48,4 +48,56 @@ const getWeeklyUserActivity = async () => {
       'xAxis.data',
       res.data.map((v) => t(v.name))
     )
-    set(barOptionsData, '
+    set(barOptionsData, 'series', [
+      {
+        name: t('analysis.activeQuantity'),
+        data: res.data.map((v) => v.value),
+        type: 'bar'
+      }
+    ])
+  }
+}
+
+const lineOptionsData = reactive<EChartsOption>(lineOptions) as EChartsOption
+
+// 每月销售总额
+const getMonthlySales = async () => {
+  const res = await getMonthlySalesApi().catch(() => {})
+  if (res) {
+    set(
+      lineOptionsData,
+      'xAxis.data',
+      res.data.map((v) => t(v.name))
+    )
+    set(lineOptionsData, 'series', [
+      {
+        name: t('analysis.estimate'),
+        smooth: true,
+        type: 'line',
+        data: res.data.map((v) => v.estimate),
+        animationDuration: 2800,
+        animationEasing: 'cubicInOut'
+      },
+      {
+        name: t('analysis.actual'),
+        smooth: true,
+        type: 'line',
+        itemStyle: {},
+        data: res.data.map((v) => v.actual),
+        animationDuration: 2800,
+        animationEasing: 'quadraticOut'
+      }
+    ])
+  }
+}
+
+const getAllApi = async () => {
+  await Promise.all([getUserAccessSource(), getWeeklyUserActivity(), getMonthlySales()])
+  loading.value = false
+}
+
+getAllApi()
+</script>
+
+<template>
+  <PanelGr
