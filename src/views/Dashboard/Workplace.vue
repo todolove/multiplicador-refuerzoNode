@@ -114,4 +114,29 @@ const { t } = useI18n()
   <div>
     <ElCard shadow="never">
       <ElSkeleton :loading="loading" animated>
-        <ElRow :g
+        <ElRow :gutter="20" justify="space-between">
+          <ElCol :xl="12" :lg="12" :md="12" :sm="24" :xs="24">
+            <div class="flex items-center">
+              <img
+                src="@/assets/imgs/avatar.jpg"
+                alt=""
+                class="w-70px h-70px rounded-[50%] mr-20px"
+              />
+              <div>
+                <div class="text-20px text-700">
+                  {{ t('workplace.goodMorning') }}，Archer，{{ t('workplace.happyDay') }}
+                </div>
+                <div class="mt-10px text-14px text-gray-500">
+                  {{ t('workplace.toady') }}，20℃ - 32℃！
+                </div>
+              </div>
+            </div>
+          </ElCol>
+          <ElCol :xl="12" :lg="12" :md="12" :sm="24" :xs="24">
+            <div class="flex h-70px items-center justify-end <sm:mt-20px">
+              <div class="px-8px text-right">
+                <div class="text-14px text-gray-400 mb-20px">{{ t('workplace.project') }}</div>
+                <CountTo
+                  class="text-20px"
+                  :start-val="0"
+                  :end-val="totalSate.project
