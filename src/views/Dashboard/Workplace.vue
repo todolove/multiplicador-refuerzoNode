@@ -56,4 +56,62 @@ const getDynamic = async () => {
 }
 
 // 获取团队
-le
+let team = reactive<Team[]>([])
+
+const getTeam = async () => {
+  const res = await getTeamApi().catch(() => {})
+  if (res) {
+    team = Object.assign(team, res.data)
+  }
+}
+
+// 获取指数
+let radarOptionData = reactive<EChartsOption>(radarOption) as EChartsOption
+
+const getRadar = async () => {
+  const res = await getRadarApi().catch(() => {})
+  if (res) {
+    set(
+      radarOptionData,
+      'radar.indicator',
+      res.data.map((v) => {
+        return {
+          name: t(v.name),
+          max: v.max
+        }
+      })
+    )
+    set(radarOptionData, 'series', [
+      {
+        name: `xxx${t('workplace.index')}`,
+        type: 'radar',
+        data: [
+          {
+            value: res.data.map((v) => v.personal),
+            name: t('workplace.personal')
+          },
+          {
+            value: res.data.map((v) => v.team),
+            name: t('workplace.team')
+          }
+        ]
+      }
+    ])
+  }
+}
+
+const getAllApi = async () => {
+  await Promise.all([getCount(), getProject(), getDynamic(), getTeam(), getRadar()])
+  loading.value = false
+}
+
+getAllApi()
+
+const { t } = useI18n()
+</script>
+
+<template>
+  <div>
+    <ElCard shadow="never">
+      <ElSkeleton :loading="loading" animated>
+        <ElRow :g
