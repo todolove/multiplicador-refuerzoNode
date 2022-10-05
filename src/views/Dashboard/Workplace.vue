@@ -139,4 +139,38 @@ const { t } = useI18n()
                 <CountTo
                   class="text-20px"
                   :start-val="0"
-                  :end-val="totalSate.project
+                  :end-val="totalSate.project"
+                  :duration="2600"
+                />
+              </div>
+              <ElDivider direction="vertical" />
+              <div class="px-8px text-right">
+                <div class="text-14px text-gray-400 mb-20px">{{ t('workplace.toDo') }}</div>
+                <CountTo
+                  class="text-20px"
+                  :start-val="0"
+                  :end-val="totalSate.todo"
+                  :duration="2600"
+                />
+              </div>
+              <ElDivider direction="vertical" border-style="dashed" />
+              <div class="px-8px text-right">
+                <div class="text-14px text-gray-400 mb-20px">{{ t('workplace.access') }}</div>
+                <CountTo
+                  class="text-20px"
+                  :start-val="0"
+                  :end-val="totalSate.access"
+                  :duration="2600"
+                />
+              </div>
+            </div>
+          </ElCol>
+        </ElRow>
+      </ElSkeleton>
+    </ElCard>
+  </div>
+
+  <ElRow class="mt-20px" :gutter="20" justify="space-between">
+    <ElCol :xl="16" :lg="16" :md="24" :sm="24" :xs="24" class="mb-20px">
+      <ElCard shadow="never">
+        <templa
