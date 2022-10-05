@@ -173,4 +173,33 @@ const { t } = useI18n()
   <ElRow class="mt-20px" :gutter="20" justify="space-between">
     <ElCol :xl="16" :lg="16" :md="24" :sm="24" :xs="24" class="mb-20px">
       <ElCard shadow="never">
-        <templa
+        <template #header>
+          <div class="flex justify-between">
+            <span>{{ t('workplace.project') }}</span>
+            <ElLink type="primary" :underline="false">{{ t('workplace.more') }}</ElLink>
+          </div>
+        </template>
+        <ElSkeleton :loading="loading" animated>
+          <ElRow>
+            <ElCol
+              v-for="(item, index) in projects"
+              :key="`card-${index}`"
+              :xl="8"
+              :lg="8"
+              :md="12"
+              :sm="24"
+              :xs="24"
+            >
+              <ElCard shadow="hover">
+                <div class="flex items-center">
+                  <Icon :icon="item.icon" :size="25" class="mr-10px" />
+                  <span class="text-16px">{{ item.name }}</span>
+                </div>
+                <div class="mt-15px text-14px text-gray-400">{{ t(item.message) }}</div>
+                <div class="mt-20px text-12px text-gray-400 flex justify-between">
+                  <span>{{ item.personal }}</span>
+                  <span>{{ formatTime(item.time, 'yyyy-MM-dd') }}</span>
+                </div>
+              </ElCard>
+            </ElCol>
+   
