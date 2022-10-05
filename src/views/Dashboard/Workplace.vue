@@ -202,4 +202,39 @@ const { t } = useI18n()
                 </div>
               </ElCard>
             </ElCol>
-   
+          </ElRow>
+        </ElSkeleton>
+      </ElCard>
+
+      <ElCard shadow="never" class="mt-20px">
+        <template #header>
+          <div class="flex justify-between">
+            <span>{{ t('workplace.dynamic') }}</span>
+            <ElLink type="primary" :underline="false">{{ t('workplace.more') }}</ElLink>
+          </div>
+        </template>
+        <ElSkeleton :loading="loading" animated>
+          <div v-for="(item, index) in dynamics" :key="`dynamics-${index}`">
+            <div class="flex items-center">
+              <img
+                src="@/assets/imgs/avatar.jpg"
+                alt=""
+                class="w-35px h-35px rounded-[50%] mr-20px"
+              />
+              <div>
+                <div class="text-14px">
+                  <Highlight :keys="item.keys.map((v) => t(v))">
+                    {{ t('workplace.pushCode') }}
+                  </Highlight>
+                </div>
+                <div class="mt-15px text-12px text-gray-400">
+                  {{ useTimeAgo(item.time) }}
+                </div>
+              </div>
+            </div>
+            <ElDivider />
+          </div>
+        </ElSkeleton>
+      </ElCard>
+    </ElCol>
+    <ElCol :x
