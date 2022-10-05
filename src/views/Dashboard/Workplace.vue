@@ -237,4 +237,42 @@ const { t } = useI18n()
         </ElSkeleton>
       </ElCard>
     </ElCol>
-    <ElCol :x
+    <ElCol :xl="8" :lg="8" :md="24" :sm="24" :xs="24" class="mb-20px">
+      <ElCard shadow="never">
+        <template #header>
+          <span>{{ t('workplace.shortcutOperation') }}</span>
+        </template>
+        <ElSkeleton :loading="loading" animated>
+          <ElCol
+            v-for="item in 9"
+            :key="`card-${item}`"
+            :xl="12"
+            :lg="12"
+            :md="12"
+            :sm="24"
+            :xs="24"
+            class="mb-10px"
+          >
+            <ElLink type="default" :underline="false">
+              {{ t('workplace.operation') }}{{ item }}
+            </ElLink>
+          </ElCol>
+        </ElSkeleton>
+      </ElCard>
+
+      <ElCard shadow="never" class="mt-20px">
+        <template #header>
+          <span>xx{{ t('workplace.index') }}</span>
+        </template>
+        <ElSkeleton :loading="loading" animated>
+          <Echart :options="radarOptionData" :height="400" />
+        </ElSkeleton>
+      </ElCard>
+
+      <ElCard shadow="never" class="mt-20px">
+        <template #header>
+          <span>{{ t('workplace.team') }}</span>
+        </template>
+        <ElSkeleton :loading="loading" animated>
+          <ElRow>
+      
