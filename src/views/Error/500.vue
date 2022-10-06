@@ -13,5 +13,5 @@ const errorClick = () => {
 </script>
 
 <template>
-  <Error @error-click="errorClick" />
+  <Error type="500" @error-click="errorClick" />
 </template>
