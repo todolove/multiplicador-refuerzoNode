@@ -275,4 +275,17 @@ const { t } = useI18n()
         </template>
         <ElSkeleton :loading="loading" animated>
           <ElRow>
-      
+            <ElCol v-for="item in team" :key="`team-${item.name}`" :span="12" class="mb-20px">
+              <div class="flex items-center">
+                <Icon :icon="item.icon" class="mr-10px" />
+                <ElLink type="default" :underline="false">
+                  {{ item.name }}
+                </ElLink>
+              </div>
+            </ElCol>
+          </ElRow>
+        </ElSkeleton>
+      </ElCard>
+    </ElCol>
+  </ElRow>
+</template>
