@@ -44,4 +44,9 @@ const save = async () => {
     <Write ref="writeRef" />
 
     <template #right>
-      <ElButton type="primary"
+      <ElButton type="primary" :loading="loading" @click="save">
+        {{ t('exampleDemo.save') }}
+      </ElButton>
+    </template>
+  </ContentDetailWrap>
+</template>
