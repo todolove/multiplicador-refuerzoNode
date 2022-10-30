@@ -44,4 +44,21 @@ const save = async () => {
         loading.value = false
       })
     if (res) {
-      emitter.emit('getList', 'ed
+      emitter.emit('getList', 'edit')
+      push('/example/example-page')
+    }
+  }
+}
+</script>
+
+<template>
+  <ContentDetailWrap :title="t('exampleDemo.edit')" @back="push('/example/example-page')">
+    <Write ref="writeRef" :current-row="currentRow" />
+
+    <template #right>
+      <ElButton type="primary" :loading="loading" @click="save">
+        {{ t('exampleDemo.save') }}
+      </ElButton>
+    </template>
+  </ContentDetailWrap>
+</template>
