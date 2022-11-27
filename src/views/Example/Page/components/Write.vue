@@ -143,4 +143,5 @@ defineExpose({
 </script>
 
 <template>
-  <Form :rules="rules" @register="r
+  <Form :rules="rules" @register="register" />
+</template>
