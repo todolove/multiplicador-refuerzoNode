@@ -11,4 +11,69 @@ const emit = defineEmits(['to-login'])
 
 const { register, elFormRef } = useForm()
 
-const { t } = u
+const { t } = useI18n()
+
+const { required } = useValidator()
+
+const schema = reactive<FormSchema[]>([
+  {
+    field: 'title',
+    colProps: {
+      span: 24
+    }
+  },
+  {
+    field: 'username',
+    label: t('login.username'),
+    value: '',
+    component: 'Input',
+    colProps: {
+      span: 24
+    },
+    componentProps: {
+      placeholder: t('login.usernamePlaceholder')
+    }
+  },
+  {
+    field: 'password',
+    label: t('login.password'),
+    value: '',
+    component: 'InputPassword',
+    colProps: {
+      span: 24
+    },
+    componentProps: {
+      style: {
+        width: '100%'
+      },
+      strength: true,
+      placeholder: t('login.passwordPlaceholder')
+    }
+  },
+  {
+    field: 'check_password',
+    label: t('login.checkPassword'),
+    value: '',
+    component: 'InputPassword',
+    colProps: {
+      span: 24
+    },
+    componentProps: {
+      style: {
+        width: '100%'
+      },
+      strength: true,
+      placeholder: t('login.passwordPlaceholder')
+    }
+  },
+  {
+    field: 'code',
+    label: t('login.code'),
+    colProps: {
+      span: 24
+    }
+  },
+  {
+    field: 'register',
+    colProps: {
+      span:
