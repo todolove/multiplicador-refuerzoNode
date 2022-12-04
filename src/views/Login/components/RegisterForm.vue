@@ -131,4 +131,15 @@ const loginRegister = async () => {
 
     <template #register>
       <div class="w-[100%]">
-        <ElButton type="primary" class="w-[100%]" :loading="loading" @click="logi
+        <ElButton type="primary" class="w-[100%]" :loading="loading" @click="loginRegister">
+          {{ t('login.register') }}
+        </ElButton>
+      </div>
+      <div class="w-[100%] mt-15px">
+        <ElButton class="w-[100%]" @click="toLogin">
+          {{ t('login.hasUser') }}
+        </ElButton>
+      </div>
+    </template>
+  </Form>
+</template>
